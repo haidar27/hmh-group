@@ -34,8 +34,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
-
 body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 85% 4%,rgba(92,119,155,.12),transparent 28%),var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
@@ -237,26 +235,6 @@ img{max-width:100%;display:block}
 @media (max-width:760px){
   .container{width:min(calc(100% - 28px),var(--max))}.nav{height:72px}.menu{position:absolute;left:14px;right:14px;top:80px;background:#122038;border:1px solid var(--line);border-radius:17px;padding:12px;display:none;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 25px 60px rgba(0,0,0,.35)}.menu.open{display:flex}.menu a{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.06)}.menu a:last-child{border:0}.nav-actions .pill{display:none}.lang-switch{margin-right:2px}.menu-toggle{display:flex}.hero{min-height:auto;padding:60px 0 35px}.hero h1{font-size:clamp(50px,17vw,86px)}.hero-copy{font-size:16px}.hero-art{margin-top:38px;min-height:300px;border-radius:22px}.art-core{inset:25px}.core-ring{width:180px;height:180px}.core-label strong{font-size:29px}.section{padding:90px 0}.section-head{display:block;margin-bottom:30px}.section-intro{margin-top:15px}.about-main,.about-side{padding:27px}.about-main p{font-size:20px}.meta-row{margin-top:30px}.verticals{grid-template-columns:1fr}.vertical{min-height:220px}.eco-grid{grid-template-columns:1fr} .feature-copy{padding:30px}.feature-art{min-height:320px}.feature-art .monogram{font-size:85px}.values{gap:12px}.value-row{grid-template-columns:42px 1fr 20px;gap:11px}.value-row h4{font-size:19px}.story-card{min-height:330px}.story-card h3{font-size:37px}.people-text{padding:30px}.people-text blockquote{font-size:29px}.insights-grid{grid-template-columns:1fr}.contact-main{padding:30px}.contact-side{padding:30px}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}.footer-bottom{display:block}.footer-bottom div+div{margin-top:8px}
 }
-
-/* === Mobile hero stability === */
-@media(max-width:760px){
-  .hero .reveal{
-    min-width:0;
-    width:100%;
-  }
-  .hero-copy,
-  .hero-cta,
-  .scroll-note,
-  .statement,
-  .hero-card{
-    max-width:100%;
-    min-width:0;
-  }
-  .hero-copy{
-    overflow-wrap:anywhere;
-  }
-}
-
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 
 /* === HMH visual refresh === */
@@ -327,7 +305,56 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .flag-en i:before{left:42%;right:42%;background:#fff}
 .flag-en i:after{top:40%;bottom:40%;background:#c93646}
 
-/* Hero title — tight stacked ink-trap style block */
+/* Hero visual — responsive image replacing the headline */
+.hero-title-box{
+  position:relative;
+  display:block;
+  width:100%;
+  max-width:100%;
+  aspect-ratio:16 / 8.5;
+  min-height:280px;
+  border-radius:28px;
+  overflow:hidden;
+  background-image:
+    linear-gradient(90deg,rgba(0,0,0,.06),transparent 55%),
+    linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.16) 72%,var(--bg) 100%),
+    url("img/bg.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  border:1px solid rgba(16,16,16,.08);
+  box-shadow:0 18px 48px rgba(0,0,0,.08);
+}
+.hero-title-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.08),transparent 42%),
+    linear-gradient(180deg,transparent 52%,rgba(255,255,255,.03) 70%,rgba(0,0,0,.08) 100%);
+  pointer-events:none;
+}
+.hero-title-box::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:42%;
+  background:linear-gradient(to bottom,transparent 0%,var(--bg) 100%);
+  opacity:.74;
+  pointer-events:none;
+}
+@media(max-width:760px){
+  .hero-wrap{grid-template-columns:1fr;gap:40px}
+  .hero-title-box{
+    width:100%;
+    min-height:220px;
+    aspect-ratio:16 / 10.5;
+    border-radius:22px;
+    background-position:center;
+  }
+}
 
 /* Stronger mobile navigation + animated burger */
 .menu-toggle{position:relative;width:48px;height:48px;display:none;flex:0 0 auto;background:linear-gradient(145deg,#1b465e,#123047);border:1px solid rgba(219,230,232,.18);border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;transition:transform .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
@@ -380,7 +407,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
   --glow:#ffcc00;
 }
 body{
-  background:transparent;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(255,204,0,.14),transparent 23%),
+    radial-gradient(circle at 90% 8%,rgba(0,0,0,.055),transparent 24%),
+    linear-gradient(135deg,#FFFFFF 0%,#F7F7F3 55%,#F1F1EC 100%);
   color:var(--text);
 }
 body:before{
@@ -784,7 +814,7 @@ html[data-theme="light"] .theme-icon-sun{opacity:1;transform:translateY(0) rotat
 .menu-toggle.is-open span{background:#111}
 
 html[data-theme="light"] body{
-  background:var(--bg);
+  background:radial-gradient(circle at 10% 5%,rgba(255,204,0,.10),transparent 23%),linear-gradient(135deg,#fff 0%,#fff 60%,#f5f5f2 100%);
 }
 html[data-theme="light"] body:before{background:linear-gradient(120deg,rgba(0,0,0,.012),transparent 35%,rgba(255,204,0,.025) 65%,transparent 100%)}
 html[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px)}
@@ -820,78 +850,6 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
   html[data-theme="light"] .menu a{color:#111f32}
 }
 
-
-
-
-/* === TOP / HERO ONLY background === */
-html,body{
-  background:var(--bg);
-}
-.hero{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  background:url("img/bg.jpg") center top / cover no-repeat;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.06) 0%,
-      rgba(255,255,255,.18) 48%,
-      var(--bg) 100%
-    );
-}
-html[data-theme="dark"] .hero::after{
-  background:
-    linear-gradient(
-      180deg,
-      rgba(5,12,22,.12) 0%,
-      rgba(5,12,22,.30) 48%,
-      var(--bg) 100%
-    );
-}
-.hero > .container{
-  position:relative;
-  z-index:1;
-}
-@media(max-width:760px){
-  .hero::before{
-    background-position:center top;
-    background-size:cover;
-  }
-  .hero::after{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.05) 0%,
-        rgba(255,255,255,.20) 45%,
-        var(--bg) 100%
-      );
-  }
-  html[data-theme="dark"] .hero::after{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(5,12,22,.10) 0%,
-        rgba(5,12,22,.34) 45%,
-        var(--bg) 100%
-      );
-  }
-}
-
 </style>
 </head>
 <body>
@@ -918,7 +876,7 @@ html[data-theme="dark"] .hero::after{
     <div class="hero-wrap">
       <div class="reveal">
         <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Independent business ecosystem · Indonesia</span></div>
-        
+        <div class="hero-title-box" role="img" aria-label="HMH Group visual" aria-hidden="true"></div>
         <p class="hero-copy" data-i18n="hero.copy">HMH Group adalah ekosistem bisnis yang menghubungkan creative & digital services, technology, capital, dan venture untuk menciptakan pertumbuhan jangka panjang.</p>
         <div class="hero-cta"><a href="#ecosystem" class="pill primary" data-i18n="hero.cta1">Explore HMH ecosystem →</a><a href="#about" class="pill" data-i18n="hero.cta2">Discover the group</a></div>
         <div class="scroll-note"><span class="scroll-line"></span><span data-i18n="hero.scroll">Scroll to explore</span></div>
@@ -1087,7 +1045,7 @@ html[data-theme="dark"] .hero::after{
     },
     en:{
       'nav.about':'About','nav.ecosystem':'Ecosystem','nav.agency':'HMH Agency','nav.values':'Values','nav.story':'Our Story','nav.contact':'Contact',
-      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
+      ,'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
       'about.intro':'HMH Group is built as a holding company that develops and connects businesses, capabilities, and opportunities across sectors.','about.established':'Group established','about.market':'Home market','about.spectrum':'Growth spectrum','about.value':'Value creation',
       'ecosystem.intro':'Like the architecture of a modern group, each vertical has its own focus while being designed to strengthen the others.','ecosystem.portfolio':'Portfolio map',
       'filter.all':'All','filter.digital':'Digital & Creative','filter.capital':'Capital','filter.venture':'Venture',
@@ -1147,7 +1105,7 @@ html[data-theme="dark"] .hero::after{
   }
   langID.addEventListener('click',()=>applyLanguage('id',true));
   langEN.addEventListener('click',()=>applyLanguage('en',true));
-  const langDefaultVersion='3';
+  const langDefaultVersion='2';
   const savedLangVersion=localStorage.getItem('hmh-lang-default-version');
   const savedLang=savedLangVersion===langDefaultVersion ? (localStorage.getItem('hmh-lang')||'en') : 'en';
   localStorage.setItem('hmh-lang-default-version',langDefaultVersion);
