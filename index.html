@@ -881,17 +881,55 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 }
 
 
-/* === Hero art: keep the rotating HMH element below bg.jpg === */
+/* === Hero text + rotating HMH spacing refinement === */
+.hero > .container > .hero-wrap{
+  transform:translateY(42px);
+}
+.hero-image-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.10) 28%,rgba(0,0,0,0) 58%),
+    linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.16) 73%,rgba(0,0,0,.28) 100%);
+  z-index:0;
+}
+.hero > .container > .hero-wrap > .reveal:first-child{
+  text-shadow:0 2px 18px rgba(0,0,0,.20);
+}
+.hero > .container > .hero-wrap > .hero-side{
+  text-shadow:0 2px 16px rgba(0,0,0,.18);
+}
 .hero-art-separate{
   position:relative;
   z-index:1;
   isolation:isolate;
+  padding-top:38px;
   padding-bottom:0;
+}
+.hero-art-separate::before{
+  content:"";
+  display:block;
+  width:min(160px,28vw);
+  height:1px;
+  margin:0 auto 22px;
+  background:linear-gradient(90deg,transparent,rgba(16,16,16,.28),transparent);
 }
 .hero-art-separate > .hero-art{
   margin-top:0;
 }
 @media(max-width:760px){
+  .hero > .container > .hero-wrap{
+    transform:translateY(24px);
+  }
+  .hero-art-separate{
+    padding-top:28px;
+  }
+  .hero-art-separate::before{
+    width:100px;
+    margin-bottom:18px;
+  }
   .hero-art-separate > .hero-art{
     margin-top:0;
   }
