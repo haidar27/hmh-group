@@ -823,8 +823,12 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 
 
 
-/* === Hero-only background image === */
+/* === TOP / HERO ONLY background === */
+html,body{
+  background:var(--bg);
+}
 .hero{
+  position:relative;
   overflow:hidden;
   isolation:isolate;
 }
@@ -842,20 +846,22 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.06) 0%,
-    rgba(255,255,255,.16) 42%,
-    var(--bg) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.06) 0%,
+      rgba(255,255,255,.18) 48%,
+      var(--bg) 100%
+    );
 }
 html[data-theme="dark"] .hero::after{
-  background:linear-gradient(
-    180deg,
-    rgba(8,15,25,.10) 0%,
-    rgba(8,15,25,.28) 45%,
-    var(--bg) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,12,22,.12) 0%,
+      rgba(5,12,22,.30) 48%,
+      var(--bg) 100%
+    );
 }
 .hero > .container{
   position:relative;
@@ -864,22 +870,25 @@ html[data-theme="dark"] .hero::after{
 @media(max-width:760px){
   .hero::before{
     background-position:center top;
+    background-size:cover;
   }
   .hero::after{
-    background:linear-gradient(
-      180deg,
-      rgba(255,255,255,.04) 0%,
-      rgba(255,255,255,.18) 38%,
-      var(--bg) 100%
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.05) 0%,
+        rgba(255,255,255,.20) 45%,
+        var(--bg) 100%
+      );
   }
   html[data-theme="dark"] .hero::after{
-    background:linear-gradient(
-      180deg,
-      rgba(8,15,25,.08) 0%,
-      rgba(8,15,25,.30) 42%,
-      var(--bg) 100%
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5,12,22,.10) 0%,
+        rgba(5,12,22,.34) 45%,
+        var(--bg) 100%
+      );
   }
 }
 
