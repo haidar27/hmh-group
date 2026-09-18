@@ -305,33 +305,20 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .flag-en i:before{left:42%;right:42%;background:#fff}
 .flag-en i:after{top:40%;bottom:40%;background:#c93646}
 
-/* Hero title — tight stacked ink-trap style block */
-.hero-title-box{position:relative;display:block;width:100%;max-width:100%;padding:0;background:transparent;border:0;box-shadow:none;overflow:visible}
-.hero-title-box h1{position:relative;z-index:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;width:max-content;max-width:100%;color:#F5F2E9;padding:0;box-shadow:none;line-height:.80;letter-spacing:-.068em;white-space:normal;vertical-align:top}
-.hero-title-main,.hero-title-em{display:block;width:max-content;max-width:100%;background:#E2C17A;color:#0D2235;padding:0;margin:0;box-shadow:none;line-height:.80;white-space:nowrap}
-.hero-title-main{padding-top:.14em}
-.hero-title-em{font-style:italic}
-@media(min-width:761px){.hero-title-box{width:100%;max-width:760px}.hero-title-box h1{max-width:100%}}
-@media(max-width:760px){.hero-wrap{grid-template-columns:1fr;gap:40px}.hero-title-box{width:100%}.hero-title-box h1{font-size:clamp(45px,15vw,76px);width:max-content;max-width:100%;line-height:.84}.hero-title-main,.hero-title-em{white-space:normal;line-height:.84;width:fit-content}.hero-title-main{padding-top:.11em}}
-
-
-/* Hero image replacing the headline — isolated change */
-.hero-title-box.hero-bg-visual{
+/* Hero image — replaces the headline, without affecting the rest of the page */
+.hero-image-box{
   position:relative;
-  display:block;
   width:100%;
   max-width:760px;
   aspect-ratio:16 / 8.5;
   min-height:280px;
-  padding:0;
   margin:0;
-  border:0;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
+  padding:0;
   overflow:hidden;
+  isolation:isolate;
+  background:var(--bg);
 }
-.hero-bg-visual img{
+.hero-image-box img{
   position:absolute;
   inset:0;
   width:100%;
@@ -339,26 +326,44 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
   max-width:none;
   display:block;
   object-fit:cover;
-  object-position:center;
+  object-position:center center;
 }
-.hero-bg-visual::after{
+.hero-image-box::after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
+  z-index:1;
   background:
-    linear-gradient(90deg,rgba(255,255,255,.04) 0%,transparent 45%),
-    linear-gradient(180deg,transparent 48%,rgba(255,255,255,.08) 68%,var(--bg) 100%);
+    linear-gradient(90deg,rgba(0,0,0,.08) 0%,transparent 42%,transparent 100%),
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(247,247,243,.05) 60%,
+      rgba(247,247,243,.58) 82%,
+      var(--bg) 100%
+    );
+}
+html[data-theme="dark"] .hero-image-box::after{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.16) 0%,transparent 42%,transparent 100%),
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(17,31,50,.06) 60%,
+      rgba(17,31,50,.62) 82%,
+      var(--bg) 100%
+    );
 }
 @media(max-width:760px){
-  .hero-title-box.hero-bg-visual{
+  .hero-wrap{grid-template-columns:1fr;gap:40px}
+  .hero-image-box{
     width:100%;
     max-width:none;
     min-height:0;
     aspect-ratio:16 / 10;
-    margin-top:2px;
   }
-  .hero-bg-visual img{object-position:center center;}
+  .hero-image-box img{object-position:center center}
 }
 
 /* Stronger mobile navigation + animated burger */
@@ -633,7 +638,6 @@ body:before{
 .menu-toggle:before{background:radial-gradient(circle at 50% 20%,rgba(255,204,0,.14),transparent 50%)}
 .menu-toggle.is-open{background:var(--accent);border-color:var(--accent)}
 .menu-toggle.is-open span{background:#111}
-.hero-title-main,.hero-title-em{background:var(--accent);color:#111f32}
 
 @media(max-width:760px){
   .menu{background:#fff;border-color:var(--line);box-shadow:0 25px 60px rgba(0,0,0,.14)}
@@ -816,7 +820,6 @@ html[data-theme="dark"] .brand-logo-dark{opacity:1;transform:translateY(0) scale
 html[data-theme="light"] .theme-icon-moon{opacity:0;transform:translateY(-12px) rotate(45deg)}
 html[data-theme="light"] .theme-icon-sun{opacity:1;transform:translateY(0) rotate(0deg)}
 
-.hero-title-main,.hero-title-em{background:var(--brand-yellow);color:#111f32}
 .menu-toggle.is-open{background:var(--brand-yellow);border-color:var(--brand-yellow)}
 .menu-toggle.is-open span{background:#111}
 
@@ -883,7 +886,7 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
     <div class="hero-wrap">
       <div class="reveal">
         <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Independent business ecosystem · Indonesia</span></div>
-        <div class="hero-title-box hero-bg-visual" aria-hidden="true"><img src="img/bg.jpg" alt="" /></div>
+        <div class="hero-image-box" aria-hidden="true"><img src="bg.jpg" alt="" /></div>
         <p class="hero-copy" data-i18n="hero.copy">HMH Group adalah ekosistem bisnis yang menghubungkan creative & digital services, technology, capital, dan venture untuk menciptakan pertumbuhan jangka panjang.</p>
         <div class="hero-cta"><a href="#ecosystem" class="pill primary" data-i18n="hero.cta1">Explore HMH ecosystem →</a><a href="#about" class="pill" data-i18n="hero.cta2">Discover the group</a></div>
         <div class="scroll-note"><span class="scroll-line"></span><span data-i18n="hero.scroll">Scroll to explore</span></div>
@@ -1040,7 +1043,7 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
   const translations={
     id:{
       'nav.about':'Tentang','nav.ecosystem':'Ekosistem','nav.agency':'HMH Agency','nav.values':'Nilai','nav.story':'Cerita Kami','nav.contact':'Kontak',
-      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.title':'<span class="hero-title-main">Bangun dengan berani.</span> <span class="hero-title-em">Berpikir melampaui.</span>','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
+      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
       'about.intro':'HMH Group dibangun sebagai holding company yang mengembangkan dan menghubungkan bisnis, kapabilitas, dan peluang lintas sektor.','about.established':'Didirikan','about.market':'Pasar utama','about.spectrum':'Spektrum pertumbuhan','about.value':'Penciptaan nilai',
       'ecosystem.intro':'Seperti arsitektur sebuah grup modern, tiap vertical memiliki fokus sendiri namun dirancang untuk saling menguatkan.','ecosystem.portfolio':'Peta portofolio',
       'filter.all':'Semua','filter.digital':'Digital & Kreatif','filter.capital':'Modal','filter.venture':'Venture',
@@ -1052,7 +1055,7 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
     },
     en:{
       'nav.about':'About','nav.ecosystem':'Ecosystem','nav.agency':'HMH Agency','nav.values':'Values','nav.story':'Our Story','nav.contact':'Contact',
-      'hero.title':'<span class="hero-title-main">Build boldly.</span> <span class="hero-title-em">Think beyond.</span>','hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
+      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
       'about.intro':'HMH Group is built as a holding company that develops and connects businesses, capabilities, and opportunities across sectors.','about.established':'Group established','about.market':'Home market','about.spectrum':'Growth spectrum','about.value':'Value creation',
       'ecosystem.intro':'Like the architecture of a modern group, each vertical has its own focus while being designed to strengthen the others.','ecosystem.portfolio':'Portfolio map',
       'filter.all':'All','filter.digital':'Digital & Creative','filter.capital':'Capital','filter.venture':'Venture',
