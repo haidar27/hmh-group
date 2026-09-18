@@ -305,28 +305,22 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .flag-en i:before{left:42%;right:42%;background:#fff}
 .flag-en i:after{top:40%;bottom:40%;background:#c93646}
 
-/* Hero image — full-bleed home/landing visual, limited to the hero only */
+/* Hero image — full-screen background layer, behind all hero content */
 .hero{
-  min-height:calc(100svh - 82px);
-  overflow:hidden;
-  isolation:isolate;
-}
-.hero .container{
   position:relative;
-  z-index:2;
+  min-height:calc(100svh - 82px);
+  padding-top:90px;
+  overflow:visible;
+  isolation:isolate;
 }
 .hero-image-box{
   position:absolute;
-  z-index:0;
-  top:0;
-  left:50%;
+  z-index:-2;
+  inset:0 50% auto 50%;
   width:100vw;
-  max-width:none;
   height:calc(100svh - 82px);
-  margin:0;
-  padding:0;
-  overflow:hidden;
   transform:translateX(-50%);
+  overflow:hidden;
   pointer-events:none;
   background:var(--bg);
 }
@@ -346,46 +340,50 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.08) 42%,rgba(0,0,0,.02) 100%),
-    linear-gradient(180deg,
-      rgba(0,0,0,.08) 0%,
-      transparent 34%,
-      rgba(247,247,243,.02) 52%,
-      rgba(247,247,243,.34) 76%,
-      var(--bg) 100%
-    );
+    linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.16) 38%,rgba(0,0,0,.03) 72%,rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.02) 42%,rgba(247,247,243,.18) 68%,var(--bg) 100%);
 }
-html[data-theme="dark"] .hero-image-box::after{
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.12) 42%,rgba(0,0,0,.03) 100%),
-    linear-gradient(180deg,
-      rgba(0,0,0,.16) 0%,
-      transparent 34%,
-      rgba(17,31,50,.04) 52%,
-      rgba(17,31,50,.40) 76%,
-      var(--bg) 100%
-    );
+.hero > .container{
+  position:relative;
+  z-index:1;
 }
 .hero > .container > .hero-wrap{
   position:relative;
-  z-index:3;
+  z-index:4;
 }
 .hero > .container > .hero-art{
   position:relative;
-  z-index:3;
+  z-index:5;
+  margin-top:72px;
+  background:var(--surface);
+}
+.hero .hero-copy,.hero .hero-cta,.hero .scroll-note,.hero .eyebrow,.hero .hero-side{
+  position:relative;
+  z-index:6;
+}
+.hero-art-separate{
+  isolation:isolate;
 }
 @media(max-width:760px){
   .hero{
     min-height:calc(100svh - 72px);
-    padding:34px 0 30px;
+    padding-top:55px;
+    padding-bottom:35px;
   }
   .hero-image-box{
-    top:0;
-    width:100vw;
     height:calc(100svh - 72px);
-    min-height:0;
   }
-  .hero-image-box img{object-position:center center}
+  .hero-image-box img{
+    object-position:center center;
+  }
+  .hero-image-box::after{
+    background:
+      linear-gradient(90deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.12) 58%,rgba(0,0,0,0) 100%),
+      linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.08) 42%,rgba(247,247,243,.30) 69%,var(--bg) 100%);
+  }
+  .hero > .container > .hero-art{
+    margin-top:56px;
+  }
 }
 
 /* Stronger mobile navigation + animated burger */
@@ -904,11 +902,11 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 
 <main id="home">
 <section class="hero">
+  <div class="hero-image-box" aria-hidden="true"><img src="img/bg.jpg" alt="" /></div>
   <div class="container">
     <div class="hero-wrap">
       <div class="reveal">
         <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Independent business ecosystem · Indonesia</span></div>
-        <div class="hero-image-box" aria-hidden="true"><img src="img/bg.jpg" alt="" /></div>
         <p class="hero-copy" data-i18n="hero.copy">HMH Group adalah ekosistem bisnis yang menghubungkan creative & digital services, technology, capital, dan venture untuk menciptakan pertumbuhan jangka panjang.</p>
         <div class="hero-cta"><a href="#ecosystem" class="pill primary" data-i18n="hero.cta1">Explore HMH ecosystem →</a><a href="#about" class="pill" data-i18n="hero.cta2">Discover the group</a></div>
         <div class="scroll-note"><span class="scroll-line"></span><span data-i18n="hero.scroll">Scroll to explore</span></div>
