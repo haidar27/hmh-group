@@ -883,7 +883,7 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 
 /* === Hero text + rotating HMH spacing refinement === */
 .hero > .container > .hero-wrap{
-  transform:translateY(42px);
+  transform:translateY(76px);
 }
 .hero-image-box::before{
   content:"";
@@ -891,8 +891,8 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.10) 28%,rgba(0,0,0,0) 58%),
-    linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.16) 73%,rgba(0,0,0,.28) 100%);
+    linear-gradient(90deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.15) 30%,rgba(0,0,0,.03) 66%,rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.02) 28%,rgba(0,0,0,.08) 42%,rgba(0,0,0,.20) 68%,rgba(0,0,0,.34) 100%);
   z-index:0;
 }
 .hero > .container > .hero-wrap > .reveal:first-child{
@@ -921,7 +921,7 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 }
 @media(max-width:760px){
   .hero > .container > .hero-wrap{
-    transform:translateY(24px);
+    transform:translateY(52px);
   }
   .hero-art-separate{
     padding-top:28px;
@@ -933,6 +933,65 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
   .hero-art-separate > .hero-art{
     margin-top:0;
   }
+}
+
+/* === Hero bridge between image and rotating HMH === */
+.hero-bridge{
+  width:min(calc(100% - 40px),var(--max));
+  margin:0 auto;
+  min-height:94px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  position:relative;
+  z-index:2;
+  padding:10px 0 4px;
+}
+.hero-bridge-line{
+  flex:1 1 180px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(16,16,16,.12),transparent);
+}
+.hero-bridge-content{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#77776f;
+  font-size:9px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.hero-bridge-content i{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(255,204,0,.10);
+}
+.hero-bridge-content b{
+  color:#111f32;
+  font-weight:700;
+}
+html[data-theme="dark"] .hero-bridge-line{
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+}
+html[data-theme="dark"] .hero-bridge-content{color:#8f9aa5}
+html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
+@media(max-width:760px){
+  .hero-bridge{
+    width:calc(100% - 28px);
+    min-height:78px;
+    gap:10px;
+    padding:8px 0 2px;
+  }
+  .hero-bridge-content{
+    gap:8px;
+    font-size:7px;
+    letter-spacing:.16em;
+  }
+  .hero-bridge-line{flex-basis:55px}
 }
 </style>
 </head>
@@ -973,6 +1032,16 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
       </div>
     </div>
 </section>
+
+<div class="hero-bridge" aria-hidden="true">
+  <div class="hero-bridge-line"></div>
+  <div class="hero-bridge-content">
+    <span>HMH GROUP</span>
+    <i></i>
+    <b>BUILD · CONNECT · GROW</b>
+  </div>
+  <div class="hero-bridge-line"></div>
+</div>
 
 <div class="container hero-art-separate">
   <div class="hero-art reveal" aria-hidden="true"><div class="art-grid"></div><div class="art-core"><div class="core-ring"></div><div class="core-label"><strong>HMH</strong><span data-i18n="hero.coreLabel">Build the next</span></div></div></div>
