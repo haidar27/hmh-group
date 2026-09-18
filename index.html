@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="img/pwa.svg" />
-<link rel="shortcut icon" href="img/pwa.svg" />
-<meta name="theme-color" content="#111f32" />
+<link rel="icon" type="image/svg+xml" href="pwa.svg" />
+<link rel="shortcut icon" href="pwa.svg" />
+<meta name="theme-color" content="#ffffff" />
 <meta name="google" content="notranslate" />
 <meta name="description" content="HMH Group — ekosistem bisnis yang menghubungkan digital, creative, technology, capital, dan venture." />
 <script>
   (function(){
-    try{document.documentElement.dataset.theme=localStorage.getItem('hmh-theme')||'dark';}
-    catch(e){document.documentElement.dataset.theme='dark';}
+    try{document.documentElement.dataset.theme=localStorage.getItem('hmh-theme-v2')||'light';}
+    catch(e){document.documentElement.dataset.theme='light';}
   })();
 </script>
 <title>HMH Group — Building Businesses. Creating Impact.</title>
@@ -602,7 +602,7 @@ body:before{
   --brand-yellow:#ffcc00;
   --theme-radius:18px;
 }
-html{color-scheme:dark}
+html{color-scheme:light}
 html[data-theme="dark"]{
   --bg:#111f32;
   --bg-2:#16263b;
@@ -652,8 +652,12 @@ body:before{
 .header{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(20px) saturate(120%);-webkit-backdrop-filter:blur(20px) saturate(120%)}
 .header.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px rgba(0,0,0,.16)}
 .logo{display:flex;align-items:center}
-.brand-logo{width:154px;height:42px;display:block;object-fit:contain;object-position:left center;transition:opacity .25s var(--ease),transform .25s var(--ease)}
-.logo:hover .brand-logo{transform:translateY(-1px)}
+.brand-logo-wrap{position:relative;width:154px;height:42px;display:block;flex:0 0 auto;overflow:visible}
+.brand-logo{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;object-position:left center;opacity:0;transform:translateY(4px) scale(.985);transition:opacity .45s var(--ease),transform .45s var(--ease),filter .45s var(--ease);will-change:opacity,transform}
+.brand-logo-light{opacity:1;transform:translateY(0) scale(1)}
+html[data-theme="dark"] .brand-logo-light{opacity:0;transform:translateY(-4px) scale(.985)}
+html[data-theme="dark"] .brand-logo-dark{opacity:1;transform:translateY(0) scale(1)}
+.logo:hover .brand-logo{filter:brightness(1.03)}
 
 .menu a{color:var(--text)}
 .menu a:after{background:var(--brand-yellow)}
@@ -796,7 +800,7 @@ html[data-theme="light"] .menu{background:#fff}
 html[data-theme="light"] .menu a{color:#111;border-bottom-color:rgba(16,16,16,.08)}
 
 @media(max-width:760px){
-  .brand-logo{width:132px;height:38px}
+  .brand-logo-wrap{width:132px;height:38px}
   .theme-toggle{width:40px;height:36px}
   .nav-actions{gap:7px}
   .menu{background:var(--surface);border-color:var(--line);box-shadow:0 25px 60px rgba(0,0,0,.2)}
@@ -814,7 +818,10 @@ html[data-theme="light"] .menu a{color:#111;border-bottom-color:rgba(16,16,16,.0
 <header class="header" id="header">
   <div class="container nav">
     <a href="#home" class="logo" aria-label="HMH Group Home">
-      <img class="brand-logo" src="img/logo.svg" alt="HMH Group" />
+      <span class="brand-logo-wrap" aria-hidden="true">
+        <img class="brand-logo brand-logo-light" src="/img/logo-light.svg" alt="" />
+        <img class="brand-logo brand-logo-dark" src="/img/logo-dark.svg" alt="" />
+      </span>
     </a>
     <nav class="menu" id="menu">
       <a href="#about" data-i18n="nav.about">About</a><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a><a href="#agency" data-i18n="nav.agency">HMH Agency</a><a href="#values" data-i18n="nav.values">Values</a><a href="#story" data-i18n="nav.story">Our Story</a><a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -948,7 +955,10 @@ html[data-theme="light"] .menu a{color:#111;border-bottom-color:rgba(16,16,16,.0
 </section>
 </main>
 
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo"><img class="brand-logo" src="img/logo.svg" alt="HMH Group" /></div><p>Holding company & business ecosystem focused on digital, creative, technology, capital, and ventures.</p></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.explore">Explore</div><div class="footer-links"><a href="#about" data-i18n="nav.about">About</a><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a><a href="#agency">Agency</a><a href="#values" data-i18n="nav.values">Values</a><a href="#contact" data-i18n="nav.contact">Contact</a></div></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.connect">Connect</div><div class="footer-links"><a href="https://www.linkedin.com/in/haidar-muttaqin-hakim/" target="_blank">LinkedIn</a><a href="https://www.instagram.com/hmh_group.id/" target="_blank">Instagram</a></div></div></div><div class="footer-bottom"><div>© <span id="year"></span> HMH Group. All rights reserved.</div><div data-i18n="footer.built">Built as a single-file responsive experience.</div></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo"><span class="brand-logo-wrap" aria-hidden="true">
+        <img class="brand-logo brand-logo-light" src="/img/logo-light.svg" alt="" />
+        <img class="brand-logo brand-logo-dark" src="/img/logo-dark.svg" alt="" />
+      </span></div><p>Holding company & business ecosystem focused on digital, creative, technology, capital, and ventures.</p></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.explore">Explore</div><div class="footer-links"><a href="#about" data-i18n="nav.about">About</a><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a><a href="#agency">Agency</a><a href="#values" data-i18n="nav.values">Values</a><a href="#contact" data-i18n="nav.contact">Contact</a></div></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.connect">Connect</div><div class="footer-links"><a href="https://www.linkedin.com/in/haidar-muttaqin-hakim/" target="_blank">LinkedIn</a><a href="https://www.instagram.com/hmh_group.id/" target="_blank">Instagram</a></div></div></div><div class="footer-bottom"><div>© <span id="year"></span> HMH Group. All rights reserved.</div><div data-i18n="footer.built">Built as a single-file responsive experience.</div></div></div></footer>
 
 <div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h3 id="modalTitle">HMH Agency</h3><button class="modal-close" id="modalClose" aria-label="Tutup">✕</button></div><div class="modal-body" id="modalBody"></div></div></div>
 <div id="toast">Email copied.</div>
@@ -975,7 +985,7 @@ html[data-theme="light"] .menu a{color:#111;border-bottom-color:rgba(16,16,16,.0
   function setTheme(theme){
     const next=theme==='light'?'light':'dark';
     root.dataset.theme=next;
-    try{localStorage.setItem('hmh-theme',next);}catch(e){}
+    try{localStorage.setItem('hmh-theme-v2',next);}catch(e){}
     updateThemeButton();
   }
   updateThemeButton();
