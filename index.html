@@ -305,17 +305,29 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .flag-en i:before{left:42%;right:42%;background:#fff}
 .flag-en i:after{top:40%;bottom:40%;background:#c93646}
 
-/* Hero image — replaces the headline, without affecting the rest of the page */
-.hero-image-box{
+/* Hero image — full-bleed home/landing visual, limited to the hero only */
+.hero{
+  min-height:calc(100svh - 82px);
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero .container{
   position:relative;
-  width:100%;
-  max-width:760px;
-  aspect-ratio:16 / 8.5;
-  min-height:280px;
+  z-index:2;
+}
+.hero-image-box{
+  position:absolute;
+  z-index:0;
+  top:0;
+  left:50%;
+  width:100vw;
+  max-width:none;
+  height:calc(100svh - 82px);
   margin:0;
   padding:0;
   overflow:hidden;
-  isolation:isolate;
+  transform:translateX(-50%);
+  pointer-events:none;
   background:var(--bg);
 }
 .hero-image-box img{
@@ -333,35 +345,45 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
   position:absolute;
   inset:0;
   pointer-events:none;
-  z-index:1;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.08) 0%,transparent 42%,transparent 100%),
+    linear-gradient(90deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.08) 42%,rgba(0,0,0,.02) 100%),
     linear-gradient(180deg,
-      transparent 0%,
-      transparent 45%,
-      rgba(247,247,243,.05) 60%,
-      rgba(247,247,243,.58) 82%,
+      rgba(0,0,0,.08) 0%,
+      transparent 34%,
+      rgba(247,247,243,.02) 52%,
+      rgba(247,247,243,.34) 76%,
       var(--bg) 100%
     );
 }
 html[data-theme="dark"] .hero-image-box::after{
   background:
-    linear-gradient(90deg,rgba(0,0,0,.16) 0%,transparent 42%,transparent 100%),
+    linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.12) 42%,rgba(0,0,0,.03) 100%),
     linear-gradient(180deg,
-      transparent 0%,
-      transparent 45%,
-      rgba(17,31,50,.06) 60%,
-      rgba(17,31,50,.62) 82%,
+      rgba(0,0,0,.16) 0%,
+      transparent 34%,
+      rgba(17,31,50,.04) 52%,
+      rgba(17,31,50,.40) 76%,
       var(--bg) 100%
     );
 }
+.hero > .container > .hero-wrap{
+  position:relative;
+  z-index:3;
+}
+.hero > .container > .hero-art{
+  position:relative;
+  z-index:3;
+}
 @media(max-width:760px){
-  .hero-wrap{grid-template-columns:1fr;gap:40px}
+  .hero{
+    min-height:calc(100svh - 72px);
+    padding:34px 0 30px;
+  }
   .hero-image-box{
-    width:100%;
-    max-width:none;
+    top:0;
+    width:100vw;
+    height:calc(100svh - 72px);
     min-height:0;
-    aspect-ratio:16 / 10;
   }
   .hero-image-box img{object-position:center center}
 }
