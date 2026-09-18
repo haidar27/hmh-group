@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="pwa.svg" />
+<link rel="shortcut icon" href="pwa.svg" />
+<meta name="theme-color" content="#111f32" />
+<meta name="google" content="notranslate" />
+<meta name="description" content="HMH Group — ekosistem bisnis yang menghubungkan digital, creative, technology, capital, dan venture." />
+<script>
+  (function(){
+    try{document.documentElement.dataset.theme=localStorage.getItem('hmh-theme')||'dark';}
+    catch(e){document.documentElement.dataset.theme='dark';}
+  })();
+</script>
+<title>HMH Group — Building Businesses. Creating Impact.</title>
+<style>
+:root{
+  --bg:#0b1220;
+  --bg-2:#101a2b;
+  --surface:#162236;
+  --surface-2:#1c2a40;
+  --text:#f3f1ea;
+  --muted:#a9b3c2;
+  --line:rgba(186,204,228,.13);
+  --line-strong:rgba(212,224,241,.24);
+  --accent:#c9b27c;
+  --accent-2:#7e91ab;
+  --warm:#e7d7a8;
+  --max:1240px;
+  --radius:24px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 85% 4%,rgba(92,119,155,.12),transparent 28%),var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer;border:0}
+img{max-width:100%;display:block}
+::selection{background:var(--accent);color:#11100d}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.progress{position:fixed;inset:0 0 auto;height:3px;background:var(--accent);transform-origin:left;transform:scaleX(0);z-index:1000}
+.grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black 0%,transparent 70%);z-index:-2}
+.orb{position:fixed;width:520px;height:520px;right:-160px;top:6vh;border-radius:50%;background:radial-gradient(circle,rgba(139,152,168,.13),transparent 65%);filter:blur(30px);z-index:-3;animation:floatOrb 12s ease-in-out infinite alternate}
+@keyframes floatOrb{to{transform:translate(-80px,90px) scale(1.15)}}
+.header{position:sticky;top:0;z-index:900;background:rgba(11,18,32,.84);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.35s var(--ease)}
+.header.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em}
+.logo-mark{width:39px;height:39px;border:1px solid var(--line-strong);display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#1b2a40,#0d1625);position:relative;overflow:hidden}
+.logo-mark:before{content:"";position:absolute;width:18px;height:18px;border-radius:6px;background:var(--accent);transform:rotate(45deg);box-shadow:0 0 30px rgba(199,164,106,.25)}
+.logo-mark span{position:relative;font-size:11px;color:#08090b;font-weight:900}
+.logo-text small{display:block;font-size:9px;letter-spacing:.21em;color:var(--muted);margin-top:2px}
+.menu{display:flex;align-items:center;gap:28px}
+.menu a{font-size:13px;color:#d9d9d5;position:relative;padding:10px 0}
+.menu a:after{content:"";position:absolute;left:0;bottom:4px;width:0;height:1px;background:var(--accent);transition:.25s}
+.menu a:hover:after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:10px}.nav-actions{flex-wrap:nowrap}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);border-radius:999px;padding:11px 16px;font-size:12px;color:#eff3f6;background:#142033;transition:.25s}
+.pill:hover{border-color:rgba(199,164,106,.55);transform:translateY(-1px)}
+.pill.primary{background:var(--accent);color:#182030;border-color:var(--accent);font-weight:800}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+.menu-toggle{display:none;width:44px;height:44px;background:#142033;color:var(--text);border:1px solid var(--line);border-radius:12px;align-items:center;justify-content:center}
+.hero{min-height:calc(100vh - 82px);display:grid;align-items:end;padding:90px 0 65px;position:relative}
+.hero-wrap{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(280px,.78fr);gap:58px;align-items:end}
+.eyebrow{display:flex;align-items:center;gap:10px;color:#c9ccd2;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(52px,7vw,108px);line-height:.91;letter-spacing:-.068em;font-weight:850;max-width:920px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-copy{max-width:610px;font-size:18px;color:#b3b6bd;margin-top:28px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-side{padding-bottom:18px}
+.statement{font-size:13px;color:var(--muted);max-width:430px;margin-bottom:34px}
+.hero-card{border-top:1px solid var(--line);padding-top:17px;display:grid;grid-template-columns:1fr auto;gap:18px}
+.hero-card b{font-size:14px}
+.hero-card span{color:var(--muted);font-size:12px}
+.scroll-note{display:flex;align-items:center;gap:12px;color:#858991;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:55px}
+.scroll-line{width:60px;height:1px;background:var(--line-strong)}
+.hero-art{margin-top:56px;border:1px solid var(--line);border-radius:32px;min-height:420px;position:relative;overflow:hidden;background:linear-gradient(140deg,#16263d 0%,#0f1a2c 58%,#21344d 100%)}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border-radius:50%;filter:blur(0);pointer-events:none}
+.hero-art:before{width:430px;height:430px;right:-160px;top:-130px;background:radial-gradient(circle,#c7a46a 0%,rgba(199,164,106,.14) 29%,transparent 68%)}
+.hero-art:after{width:380px;height:380px;left:-120px;bottom:-180px;background:radial-gradient(circle,#8b98a8 0%,rgba(139,152,168,.10) 31%,transparent 69%)}
+.art-grid{position:absolute;inset:0;background:linear-gradient(transparent 49.7%,rgba(255,255,255,.055) 50%,transparent 50.3%),linear-gradient(90deg,transparent 49.7%,rgba(255,255,255,.055) 50%,transparent 50.3%);background-size:55px 55px;opacity:.33;transform:perspective(800px) rotateX(48deg) scale(1.4) translateY(70px)}
+.art-core{position:absolute;inset:55px;display:grid;place-items:center}
+.core-ring{width:230px;height:230px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 0 50px rgba(139,152,168,.06),0 0 0 30px rgba(255,255,255,.018);position:relative;animation:spin 18s linear infinite}
+.core-ring:before,.core-ring:after{content:"";position:absolute;inset:22px;border-radius:50%;border:1px dashed rgba(199,164,106,.35)}
+.core-ring:after{inset:54px;border-style:solid;border-color:rgba(139,152,168,.28)}
+.core-label{position:absolute;text-align:center;z-index:2}
+.core-label strong{display:block;font-size:36px;letter-spacing:-.06em}
+.core-label span{font-size:10px;letter-spacing:.22em;color:#a8adb5;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.section{padding:125px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.kicker{font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:11px}
+.section-title{font-size:clamp(38px,5vw,76px);line-height:.98;letter-spacing:-.06em;max-width:810px}
+.section-intro{color:var(--muted);max-width:470px;font-size:15px}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.about-main,.about-side{border:1px solid var(--line);background:linear-gradient(145deg,#18253a,#101a2b);border-radius:var(--radius);padding:36px}
+.about-main p{font-size:24px;line-height:1.28;letter-spacing:-.035em;max-width:850px}
+.about-main p strong{color:var(--accent)}
+.meta-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:50px;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.meta-item{background:#0c0e11;padding:20px}
+.meta-item b{display:block;font-size:27px;letter-spacing:-.04em}
+.meta-item span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-top:6px}
+.about-side{display:flex;flex-direction:column;justify-content:space-between}
+.quote-mark{font-size:72px;line-height:.75;color:rgba(199,164,106,.32)}
+.about-side blockquote{font-size:24px;line-height:1.22;letter-spacing:-.03em;margin:25px 0}
+.about-side small{color:var(--muted);font-size:12px}
+.verticals{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vertical{background:#101a2b;padding:27px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:.35s var(--ease);position:relative}
+.vertical:hover{background:#18273d;transform:translateY(-2px)}
+.vertical-index{display:flex;justify-content:space-between;color:#6f737c;font-size:11px;letter-spacing:.12em}
+.vertical h3{font-size:31px;letter-spacing:-.045em;max-width:340px}
+.vertical p{color:var(--muted);font-size:13px;max-width:450px;margin-top:10px}
+.vertical .arrow{font-size:22px;color:var(--accent);opacity:.85}
+.eco-top{display:flex;gap:10px;overflow:auto;padding-bottom:9px;margin-bottom:18px;scrollbar-width:none}
+.eco-top::-webkit-scrollbar{display:none}
+.filter-btn{flex:0 0 auto;background:#0e1014;color:#aaaeb5;border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:12px}
+.filter-btn.active{background:var(--accent);color:#090b0d;border-color:var(--accent);font-weight:800}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.eco-card{border:1px solid var(--line);border-radius:20px;padding:25px;background:#111c2e;min-height:255px;display:flex;flex-direction:column;justify-content:space-between;transition:.3s var(--ease)}
+.eco-card:hover{border-color:var(--line-strong);transform:translateY(-4px);background:#18273d}
+.eco-topline{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand-badge{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8e929a;border:1px solid var(--line);border-radius:999px;padding:6px 9px}
+.eco-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,#16191e,#0a0c0f);font-weight:800}
+.eco-card h4{font-size:25px;letter-spacing:-.04em;margin-top:22px}
+.eco-card p{color:var(--muted);font-size:13px;margin-top:8px}
+.eco-foot{display:flex;justify-content:space-between;align-items:center;margin-top:25px;font-size:11px;color:#8c919a}
+.eco-foot b{font-size:11px;color:#f1f1ef}
+.feature{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:#0b0d10}
+.feature-copy{padding:54px;display:flex;flex-direction:column;justify-content:center}
+.feature-copy h3{font-size:clamp(38px,4.5vw,66px);letter-spacing:-.06em;line-height:.95}
+.feature-copy p{color:var(--muted);max-width:520px;margin-top:22px}
+.feature-list{display:grid;gap:1px;background:var(--line);margin-top:32px;border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.feature-list div{background:#0d0f12;padding:15px 17px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.feature-list span{color:#8c9199}
+.feature-list b{font-weight:600}
+.feature-art{min-height:560px;position:relative;background:radial-gradient(circle at 60% 28%,rgba(199,164,106,.14),transparent 22%),linear-gradient(145deg,#15191d,#090b0d)}
+.feature-art:before{content:"";position:absolute;inset:45px;border:1px solid rgba(255,255,255,.12);border-radius:24px;transform:skewY(-8deg);background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px}
+.feature-art .monogram{position:absolute;right:12%;top:19%;font-size:120px;font-weight:900;letter-spacing:-.12em;color:rgba(199,164,106,.93);text-shadow:30px 30px 0 rgba(139,152,168,.06);transform:skewY(-8deg)}
+.feature-art .caption{position:absolute;left:10%;bottom:9%;display:flex;gap:10px;align-items:center;color:#a7abb3;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.feature-art .caption i{display:block;width:34px;height:1px;background:var(--accent)}
+.values{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.values-main{padding:0 0 0 1px}
+.value-row{display:grid;grid-template-columns:60px 1fr 30px;gap:20px;align-items:center;padding:21px 0;border-top:1px solid var(--line)}
+.value-row:first-child{border-top:0}
+.value-no{font-size:11px;color:#6f747d;letter-spacing:.12em}
+.value-row h4{font-size:22px;letter-spacing:-.03em}
+.value-row p{font-size:12px;color:var(--muted);margin-top:4px;max-width:690px}
+.value-arrow{color:#7d818a}
+.values-note{border:1px solid var(--line);border-radius:24px;padding:30px;background:linear-gradient(145deg,#13161b,#0b0d10);min-height:100%}
+.values-note h4{font-size:30px;letter-spacing:-.045em;line-height:1}
+.values-note p{color:var(--muted);font-size:13px;margin-top:14px}
+.values-note .mini{margin-top:36px;border-top:1px solid var(--line);padding-top:20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7f838c}
+.story{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.timeline{border-left:1px solid var(--line);padding-left:31px}
+.t-item{position:relative;padding:0 0 42px}
+.t-item:last-child{padding-bottom:0}
+.t-item:before{content:"";position:absolute;left:-37px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid #70747d}
+.t-item:first-child:before{border-color:var(--accent);box-shadow:0 0 15px rgba(199,164,106,.24)}
+.t-year{font-size:11px;color:var(--accent);letter-spacing:.16em;text-transform:uppercase}
+.t-item h4{font-size:25px;letter-spacing:-.035em;margin-top:7px}
+.t-item p{font-size:13px;color:var(--muted);margin-top:8px;max-width:650px}
+.story-card{border:1px solid var(--line);border-radius:24px;min-height:420px;padding:30px;background:linear-gradient(160deg,#12151a 5%,#0a0c0f 55%,#171b1e 100%);position:relative;overflow:hidden}
+.story-card:before{content:"HMH";position:absolute;right:-40px;bottom:-80px;font-size:200px;font-weight:900;letter-spacing:-.13em;color:rgba(255,255,255,.025)}
+.story-card .tag{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9ea2aa}
+.story-card h3{font-size:47px;line-height:.95;letter-spacing:-.06em;margin-top:35px;max-width:410px}
+.story-card p{font-size:13px;color:var(--muted);margin-top:18px;max-width:420px}
+.people{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.people-card{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#111c2e;position:relative}
+.portrait{min-height:475px;position:relative;overflow:hidden;background:linear-gradient(160deg,#21344c,#101a2b 63%,#182b42);display:flex;align-items:center;justify-content:center}
+.portrait:before{content:"FOUNDER PHOTO";position:absolute;inset:20px;border:1px dashed rgba(199,164,106,.30);border-radius:22px;display:grid;place-items:center;color:#77684f;font-size:11px;letter-spacing:.2em;text-transform:uppercase;z-index:0}
+.portrait img{position:relative;z-index:1;width:100%;height:475px;object-fit:cover;object-position:center top;display:block;background:linear-gradient(160deg,#232629,#101214);color:#8f939a}
+.portrait.has-image:before{display:none}
+.portrait-fallback{position:absolute;z-index:2;text-align:center;color:#91856f;font-size:11px;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+.portrait.has-image .portrait-fallback{display:none}
+.people-card-copy{padding:29px}
+.people-card-copy .role{color:var(--accent);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.people-card-copy h3{font-size:34px;letter-spacing:-.05em;margin-top:8px}
+.people-card-copy p{color:var(--muted);font-size:13px;margin-top:11px}
+.people-text{border:1px solid var(--line);border-radius:26px;padding:44px;background:linear-gradient(145deg,#18253a,#101a2b);display:flex;flex-direction:column;justify-content:space-between}
+.people-text blockquote{font-size:37px;line-height:1.08;letter-spacing:-.055em;max-width:670px}
+.people-text blockquote em{font-style:normal;color:var(--accent)}
+.people-text .foot{border-top:1px solid var(--line);padding-top:20px;color:#81858f;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+.insights-head{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:30px}
+.insight{border:1px solid var(--line);border-radius:22px;background:#111c2e;padding:25px;min-height:265px;display:flex;flex-direction:column;justify-content:space-between;transition:.3s}
+.insight:hover{transform:translateY(-4px);background:#18273d}
+.insight .meta{display:flex;justify-content:space-between;color:#70757e;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.insight h4{font-size:26px;letter-spacing:-.045em;line-height:1.06;max-width:360px}
+.insight p{font-size:12px;color:var(--muted);margin-top:10px}
+.contact{border:1px solid var(--line);border-radius:32px;overflow:hidden;background:linear-gradient(140deg,#1b2a40,#101a2b 55%,#1a2a40);display:grid;grid-template-columns:1.15fr .85fr}
+.contact-main{padding:58px}
+.contact-main .section-title{max-width:730px}
+.contact-main p{color:var(--muted);max-width:600px;margin-top:18px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.contact-side{border-left:1px solid var(--line);padding:38px;display:flex;flex-direction:column;justify-content:space-between}
+.contact-side .label{font-size:10px;letter-spacing:.16em;color:#737780;text-transform:uppercase}
+.contact-side a{font-size:21px;letter-spacing:-.035em;margin-top:8px;display:block;word-break:break-word}
+.contact-side small{color:#7f838c;font-size:11px}
+.footer{padding:42px 0 28px;border-top:1px solid var(--line);margin-top:100px}
+.footer-grid{display:grid;grid-template-columns:1fr auto auto;gap:35px;align-items:start}
+.footer-brand p{color:#70757e;font-size:11px;max-width:310px;margin-top:13px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+.footer-links a{font-size:11px;color:#9b9fa6}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:30px;padding-top:20px;color:#5f646d;font-size:10px}
+.modal{position:fixed;inset:0;background:rgba(4,5,7,.75);backdrop-filter:blur(12px);display:none;place-items:center;z-index:1200;padding:20px}
+.modal.open{display:grid}
+.modal-box{width:min(720px,100%);background:#132038;border:1px solid var(--line-strong);border-radius:26px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.modal-head h3{font-size:28px;letter-spacing:-.04em}
+.modal-close{width:38px;height:38px;border-radius:10px;background:#15181d;color:#c9ccd0;border:1px solid var(--line)}
+.modal-body{color:#aeb2ba;font-size:14px;margin-top:20px}
+.modal-body p{margin-bottom:14px}
+#toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e8edf2;color:#0d1625;border-radius:999px;padding:12px 18px;font-size:12px;font-weight:800;z-index:1500;transition:.3s}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+.lang-switch{display:inline-flex;align-items:center;gap:4px;padding:4px;border:1px solid var(--line);background:#132038;border-radius:999px}
+.lang-btn{width:31px;height:28px;border-radius:999px;background:transparent;color:inherit;border:0;display:grid;place-items:center;font-size:15px;line-height:1;opacity:.6;transition:.25s var(--ease);filter:saturate(.7)}
+.lang-btn:hover{opacity:1;transform:translateY(-1px)}
+.lang-btn.active{background:rgba(201,178,124,.16);opacity:1;filter:saturate(1);box-shadow:inset 0 0 0 1px rgba(201,178,124,.2)}
+.menu-toggle span{display:block;width:19px;height:2px;background:var(--text);border-radius:4px;transition:transform .35s var(--ease),opacity .25s,width .35s var(--ease)}
+.menu-toggle span+span{margin-top:4px}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0;transform:scaleX(.3)}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.menu.open{animation:menuDrop .28s var(--ease)}
+@keyframes menuDrop{from{opacity:0;transform:translateY(-10px) scale(.985)}to{opacity:1;transform:none}}
+@media (max-width:1020px){
+  .menu{gap:16px}.menu a{font-size:12px}.hero-wrap,.about-grid,.feature,.values,.story,.people,.contact{grid-template-columns:1fr}.hero-side{padding-bottom:0}.hero{padding-top:75px}.hero-art{min-height:360px}.feature-art{min-height:420px}.contact-side{border-left:0;border-top:1px solid var(--line)}.eco-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.footer-links{justify-content:flex-start}
+}
+@media (max-width:760px){
+  .container{width:min(calc(100% - 28px),var(--max))}.nav{height:72px}.menu{position:absolute;left:14px;right:14px;top:80px;background:#122038;border:1px solid var(--line);border-radius:17px;padding:12px;display:none;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 25px 60px rgba(0,0,0,.35)}.menu.open{display:flex}.menu a{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.06)}.menu a:last-child{border:0}.nav-actions .pill{display:none}.lang-switch{margin-right:2px}.menu-toggle{display:flex}.hero{min-height:auto;padding:60px 0 35px}.hero h1{font-size:clamp(50px,17vw,86px)}.hero-copy{font-size:16px}.hero-art{margin-top:38px;min-height:300px;border-radius:22px}.art-core{inset:25px}.core-ring{width:180px;height:180px}.core-label strong{font-size:29px}.section{padding:90px 0}.section-head{display:block;margin-bottom:30px}.section-intro{margin-top:15px}.about-main,.about-side{padding:27px}.about-main p{font-size:20px}.meta-row{margin-top:30px}.verticals{grid-template-columns:1fr}.vertical{min-height:220px}.eco-grid{grid-template-columns:1fr} .feature-copy{padding:30px}.feature-art{min-height:320px}.feature-art .monogram{font-size:85px}.values{gap:12px}.value-row{grid-template-columns:42px 1fr 20px;gap:11px}.value-row h4{font-size:19px}.story-card{min-height:330px}.story-card h3{font-size:37px}.people-text{padding:30px}.people-text blockquote{font-size:29px}.insights-grid{grid-template-columns:1fr}.contact-main{padding:30px}.contact-side{padding:30px}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}.footer-bottom{display:block}.footer-bottom div+div{margin-top:8px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* === HMH visual refresh === */
+:root{
+  --bg:#10263a;
+  --bg-2:#16334b;
+  --surface:#1a3b53;
+  --surface-2:#214961;
+  --text:#f5f2e9;
+  --muted:#aebfca;
+  --line:rgba(206,225,232,.16);
+  --line-strong:rgba(229,214,171,.34);
+  --accent:#e2c17a;
+  --accent-2:#75b6bd;
+  --warm:#f4dfab;
+  --glow:#3d8392;
+}
+body{background:
+  radial-gradient(circle at 12% 12%,rgba(79,150,166,.20),transparent 28%),
+  radial-gradient(circle at 92% 10%,rgba(226,193,122,.18),transparent 24%),
+  linear-gradient(135deg,#0d2235 0%,#123149 48%,#0f293d 100%);}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.025),transparent 30%,rgba(115,183,192,.03) 60%,transparent 100%);z-index:-4}
+.progress{background:linear-gradient(90deg,#75b6bd,#e2c17a,#f4dfab);box-shadow:0 0 18px rgba(226,193,122,.45)}
+.grid-bg{opacity:.24;background-image:linear-gradient(rgba(230,239,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(230,239,241,.04) 1px,transparent 1px)}
+.orb{background:radial-gradient(circle,rgba(76,168,181,.19),rgba(226,193,122,.08) 36%,transparent 69%);}
+.header{background:rgba(13,34,53,.76);backdrop-filter:blur(22px) saturate(135%)}
+.logo-mark{background:linear-gradient(145deg,#24506b,#123047);box-shadow:inset 0 0 20px rgba(117,182,189,.11),0 8px 22px rgba(0,0,0,.15)}
+.logo-mark:before{background:linear-gradient(135deg,#e2c17a,#f5dda4);box-shadow:0 0 28px rgba(226,193,122,.28)}
+.pill{background:rgba(27,66,88,.64);border-color:rgba(211,227,231,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.pill:hover{border-color:rgba(226,193,122,.65);box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.pill.primary{background:linear-gradient(135deg,#e2c17a,#caa35d);color:#10253a;box-shadow:0 10px 30px rgba(226,193,122,.16)}
+.dot{background:#75b6bd;box-shadow:0 0 14px rgba(117,182,189,.7)}
+.hero h1 em{color:#e2c17a;text-shadow:0 0 30px rgba(226,193,122,.11)}
+.hero-art{background:linear-gradient(140deg,#1d5369 0%,#15364f 48%,#264358 100%);box-shadow:inset 0 0 70px rgba(90,169,180,.06)}
+.hero-art:before{background:radial-gradient(circle,#e2c17a 0%,rgba(226,193,122,.15) 29%,transparent 68%)}
+.hero-art:after{background:radial-gradient(circle,#62acb5 0%,rgba(98,172,181,.13) 31%,transparent 69%)}
+.core-ring{box-shadow:inset 0 0 50px rgba(117,182,189,.10),0 0 0 30px rgba(255,255,255,.02),0 0 55px rgba(38,107,122,.15)}
+.core-ring:before{border-color:rgba(226,193,122,.5)}
+.core-ring:after{border-color:rgba(117,182,189,.4)}
+.kicker,.people-card-copy .role{color:#e2c17a}
+.about-main,.about-side,.people-text{background:linear-gradient(145deg,rgba(31,72,96,.91),rgba(18,48,70,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.about-main p strong{color:#e2c17a}
+.about-side .quote-mark{color:rgba(226,193,122,.34)}
+.vertical{background:#16364e}
+.vertical:hover{background:#1d5268}
+.eco-card,.insight{background:#173a52}
+.eco-card:hover,.insight:hover{background:#1d5067;border-color:rgba(226,193,122,.28)}
+.filter-btn{background:#123047}
+.filter-btn.active{background:#e2c17a;box-shadow:0 8px 22px rgba(226,193,122,.15)}
+.contact{background:linear-gradient(135deg,#20536a,#15364f 55%,#21465d)}
+.contact-side{background:rgba(9,30,45,.12)}
+.modal-box{background:#15364f}
+.modal-close{background:#17405a}
+#toast{background:#f0e2bd;color:#10263a;box-shadow:0 10px 35px rgba(0,0,0,.2)}
+
+/* Language switch — flag only */
+.lang-switch{display:inline-flex;align-items:center;gap:6px;padding:4px;border:1px solid rgba(214,228,231,.16);background:rgba(8,31,46,.5);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 5px 18px rgba(0,0,0,.08)}
+.lang-btn{position:relative;width:38px;height:34px;padding:0;border-radius:50%;background:transparent;color:#d8e3e8;border:0;display:grid;place-items:center;opacity:.5;filter:none;cursor:pointer;transition:background .24s var(--ease),opacity .24s var(--ease),transform .24s var(--ease),box-shadow .24s var(--ease)}
+.lang-btn:hover{opacity:1;transform:translateY(-1px);background:rgba(255,255,255,.045)}
+.lang-btn.active{background:rgba(226,193,122,.12);opacity:1;box-shadow:inset 0 0 0 1px rgba(226,193,122,.2),0 4px 14px rgba(0,0,0,.08)}
+.lang-btn.active .flag{transform:scale(1.07)}
+.flag{width:23px;height:16px;border-radius:3px;display:block;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 2px 7px rgba(0,0,0,.15);transition:transform .24s var(--ease),box-shadow .24s var(--ease)}
+.flag-id{background:linear-gradient(to bottom,#e94b4b 0 50%,#fff 50%)}
+.flag-en{background:linear-gradient(0deg,#173e91,#173e91)}
+.flag-en:before,.flag-en:after,.flag-en i:before,.flag-en i:after{content:"";position:absolute;inset:0}
+.flag-en:before{background:linear-gradient(25deg,transparent 44%,#fff 44% 56%,transparent 56%),linear-gradient(-25deg,transparent 44%,#fff 44% 56%,transparent 56%)}
+.flag-en:after{background:linear-gradient(25deg,transparent 47%,#c93646 47% 53%,transparent 53%),linear-gradient(-25deg,transparent 47%,#c93646 47% 53%,transparent 53%)}
+.flag-en i:before{left:42%;right:42%;background:#fff}
+.flag-en i:after{top:40%;bottom:40%;background:#c93646}
+
+/* Hero title — tight stacked ink-trap style block */
+.hero-title-box{position:relative;display:block;width:100%;max-width:100%;padding:0;background:transparent;border:0;box-shadow:none;overflow:visible}
+.hero-title-box h1{position:relative;z-index:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;width:max-content;max-width:100%;color:#F5F2E9;padding:0;box-shadow:none;line-height:.80;letter-spacing:-.068em;white-space:normal;vertical-align:top}
+.hero-title-main,.hero-title-em{display:block;width:max-content;max-width:100%;background:#E2C17A;color:#0D2235;padding:0;margin:0;box-shadow:none;line-height:.80;white-space:nowrap}
+.hero-title-main{padding-top:.14em}
+.hero-title-em{font-style:italic}
+@media(min-width:761px){.hero-title-box{width:100%;max-width:760px}.hero-title-box h1{max-width:100%}}
+@media(max-width:760px){.hero-wrap{grid-template-columns:1fr;gap:40px}.hero-title-box{width:100%}.hero-title-box h1{font-size:clamp(45px,15vw,76px);width:max-content;max-width:100%;line-height:.84}.hero-title-main,.hero-title-em{white-space:normal;line-height:.84;width:fit-content}.hero-title-main{padding-top:.11em}}
+
+/* Stronger mobile navigation + animated burger */
+.menu-toggle{position:relative;width:48px;height:48px;display:none;flex:0 0 auto;background:linear-gradient(145deg,#1b465e,#123047);border:1px solid rgba(219,230,232,.18);border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;transition:transform .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.menu-toggle:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 20%,rgba(226,193,122,.12),transparent 50%);opacity:0;transition:opacity .35s var(--ease)}
+.menu-toggle:hover{transform:translateY(-2px);border-color:rgba(226,193,122,.42);box-shadow:0 12px 25px rgba(0,0,0,.2),0 0 0 4px rgba(226,193,122,.04)}
+.menu-toggle.is-open{background:linear-gradient(145deg,#285d70,#173f58);border-color:rgba(226,193,122,.36);box-shadow:0 12px 28px rgba(0,0,0,.22),0 0 0 4px rgba(226,193,122,.05)}
+.menu-toggle.is-open:before{opacity:1}
+.menu-toggle span{position:absolute;left:50%;width:20px;height:2px;margin:0!important;background:#f5f2e9;border-radius:10px;transition:transform .45s var(--ease),opacity .25s var(--ease),width .35s var(--ease),background .35s var(--ease)}
+.menu-toggle span:nth-child(1){top:17px;transform:translateX(-50%)}
+.menu-toggle span:nth-child(2){top:23px;transform:translateX(-50%)}
+.menu-toggle span:nth-child(3){top:29px;transform:translateX(-50%)}
+.menu-toggle.is-open span{background:#e2c17a}
+.menu-toggle.is-open span:nth-child(1){top:23px;transform:translateX(-50%) rotate(45deg);width:23px}
+.menu-toggle.is-open span:nth-child(2){opacity:0;transform:translateX(-50%) scaleX(.15)}
+.menu-toggle.is-open span:nth-child(3){top:23px;transform:translateX(-50%) rotate(-45deg);width:23px}
+
+[data-i18n].lang-swap{animation:langSwap .18s ease-out}
+@keyframes langSwap{0%{opacity:.25;transform:translateY(2px)}100%{opacity:1;transform:translateY(0)}}
+
+@media (max-width:760px){
+  .nav{height:72px}
+  .nav-actions{gap:8px}
+  .nav-actions .nav-optional{display:none}
+  .menu-toggle{display:flex}
+  .menu{position:absolute;left:14px;right:14px;top:80px;display:flex;visibility:hidden;pointer-events:none;opacity:0;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transform:translateY(-14px) scale(.985);transform-origin:top right;background:linear-gradient(155deg,rgba(25,63,84,.98),rgba(13,39,58,.98));border:1px solid rgba(214,228,231,.15);border-radius:20px;padding:8px;box-shadow:0 25px 70px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.04);transition:max-height .45s var(--ease),opacity .35s var(--ease),transform .45s var(--ease),visibility 0s linear .45s}
+  .menu.open{visibility:visible;pointer-events:auto;opacity:1;max-height:520px;transform:none;transition:max-height .55s var(--ease),opacity .35s var(--ease),transform .45s var(--ease),visibility 0s linear 0s}
+  .menu a{padding:15px 14px;border-bottom:1px solid rgba(255,255,255,.065);border-radius:12px;transform:translateX(-8px);opacity:0;transition:background .25s,var(--ease),transform .42s var(--ease),opacity .35s var(--ease);font-size:13px}
+  .menu.open a{transform:none;opacity:1}
+  .menu.open a:nth-child(1){transition-delay:.04s}.menu.open a:nth-child(2){transition-delay:.08s}.menu.open a:nth-child(3){transition-delay:.12s}.menu.open a:nth-child(4){transition-delay:.16s}.menu.open a:nth-child(5){transition-delay:.20s}.menu.open a:nth-child(6){transition-delay:.24s}
+  .menu a:hover{background:rgba(255,255,255,.045)}
+  .lang-switch{padding:3px;gap:4px}
+  .lang-btn{width:36px;height:32px}
+  .flag{width:22px;height:15px}
+}
+
+
+/* === HMH yellow / white / black brand theme === */
+:root{
+  --bg:#F7F7F3;
+  --bg-2:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F0F0EA;
+  --text:#101010;
+  --muted:#666660;
+  --line:rgba(16,16,16,.12);
+  --line-strong:rgba(16,16,16,.24);
+  --accent:#ffcc00;
+  --accent-2:#e3ad00;
+  --warm:#FFF0A8;
+  --glow:#ffcc00;
+}
+body{
+  background:
+    radial-gradient(circle at 10% 5%,rgba(255,204,0,.14),transparent 23%),
+    radial-gradient(circle at 90% 8%,rgba(0,0,0,.055),transparent 24%),
+    linear-gradient(135deg,#FFFFFF 0%,#F7F7F3 55%,#F1F1EC 100%);
+  color:var(--text);
+}
+body:before{
+  background:linear-gradient(120deg,rgba(0,0,0,.018),transparent 35%,rgba(255,204,0,.035) 65%,transparent 100%);
+}
+::selection{background:var(--accent);color:#111}
+.progress{background:var(--accent);box-shadow:0 0 18px rgba(255,204,0,.5)}
+.grid-bg{
+  opacity:.2;
+  background-image:
+    linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);
+}
+.orb{background:radial-gradient(circle,rgba(255,204,0,.20),rgba(0,0,0,.035) 38%,transparent 70%)}
+.header{
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(20px) saturate(120%);
+  -webkit-backdrop-filter:blur(20px) saturate(120%);
+  border-bottom-color:transparent;
+}
+.header.scrolled{
+  border-bottom-color:var(--line);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.logo{color:#111}
+.logo-mark{
+  background:var(--accent);
+  border-color:rgba(16,16,16,.16);
+  box-shadow:0 7px 20px rgba(255,204,0,.18),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.logo-mark:before{
+  background:#111;
+  box-shadow:none;
+}
+.logo-mark span{color:#fff}
+.logo-text small{color:#6b6b65}
+.menu a{color:#161616}
+.menu a:after{background:#111}
+.pill{
+  color:#111;
+  background:#fff;
+  border-color:rgba(16,16,16,.18);
+  box-shadow:0 4px 14px rgba(0,0,0,.04);
+}
+.pill:hover{
+  border-color:rgba(16,16,16,.45);
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+}
+.pill.primary{
+  background:var(--accent);
+  color:#111;
+  border-color:var(--accent);
+  box-shadow:0 10px 28px rgba(255,204,0,.22);
+}
+.dot{background:#111;box-shadow:0 0 12px rgba(0,0,0,.22)}
+.menu-toggle{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+  box-shadow:0 8px 20px rgba(0,0,0,.14);
+}
+.menu-toggle span{background:#fff}
+.menu-toggle.is-open{background:var(--accent);border-color:var(--accent)}
+.menu-toggle.is-open span{background:#111}
+.eyebrow{color:#686862}
+.hero h1{color:#111}
+.hero h1 em{color:#111;text-shadow:none}
+.hero-copy{color:#50504b}
+.statement{color:#65655f}
+.hero-card{border-top-color:var(--line)}
+.hero-card span{color:#72726c}
+.scroll-note{color:#71716b}
+.scroll-line{background:var(--line-strong)}
+.hero-art{
+  background:
+    radial-gradient(circle at 70% 28%,rgba(255,204,0,.18),transparent 20%),
+    linear-gradient(145deg,#111 0%,#191919 56%,#25251f 100%);
+  border-color:#111;
+  box-shadow:0 24px 60px rgba(0,0,0,.12);
+}
+.hero-art:before{background:radial-gradient(circle, #ffcc00 0%,rgba(255,204,0,.18) 30%,transparent 69%)}
+.hero-art:after{background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.10) 28%,transparent 69%)}
+.art-grid{
+  background:
+    linear-gradient(transparent 49.7%,rgba(255,255,255,.09) 50%,transparent 50.3%),
+    linear-gradient(90deg,transparent 49.7%,rgba(255,255,255,.09) 50%,transparent 50.3%);
+}
+.core-ring{
+  border-color:rgba(255,255,255,.18);
+  box-shadow:inset 0 0 50px rgba(255,204,0,.08),0 0 0 30px rgba(255,255,255,.02),0 0 55px rgba(255,204,0,.08);
+}
+.core-ring:before{border-color:rgba(255,204,0,.58)}
+.core-ring:after{border-color:rgba(255,255,255,.35)}
+.core-label strong{color:#fff}
+.core-label span{color:#c8c8c1}
+.kicker,.people-card-copy .role,.t-year{color:#8f6d00}
+.section-title{color:#111}
+.section-intro{color:#666660}
+.about-main,.about-side,.people-text{
+  background:#fff;
+  border-color:var(--line);
+  box-shadow:0 14px 35px rgba(0,0,0,.045);
+}
+.about-main p{color:#181818}
+.about-main p strong{color:#A67A00}
+.meta-row{background:var(--line);border-color:var(--line)}
+.meta-item{background:#111;color:#fff}
+.meta-item span{color:#b9b9b2}
+.quote-mark{color:rgba(166,122,0,.24)}
+.about-side blockquote{color:#151515}
+.about-side small{color:#77776f}
+.verticals{background:var(--line);border-color:var(--line)}
+.vertical{background:#fff;color:#111}
+.vertical:hover{background:#111;color:#fff}
+.vertical p{color:#686862}
+.vertical:hover p{color:#c9c9c2}
+.vertical-index{color:#888880}
+.vertical:hover .vertical-index{color:#c9c9c2}
+.vertical .arrow{color:#A67A00}
+.vertical:hover .arrow{color:var(--accent)}
+.filter-btn{background:#fff;color:#55554f;border-color:var(--line)}
+.filter-btn.active{background:var(--accent);color:#111;border-color:var(--accent);box-shadow:0 8px 22px rgba(255,204,0,.18)}
+.eco-card,.insight{background:#fff;border-color:var(--line);color:#111;box-shadow:0 10px 28px rgba(0,0,0,.035)}
+.eco-card:hover,.insight:hover{background:#111;color:#fff;border-color:#111}
+.brand-badge{color:#77776f;border-color:var(--line)}
+.eco-icon{background:#111;color:var(--accent);border-color:#111}
+.eco-card h4,.insight h4{color:#111}
+.eco-card:hover h4,.insight:hover h4{color:#fff}
+.eco-card p,.insight p{color:#686862}
+.eco-card:hover p,.insight:hover p{color:#c8c8c1}
+.eco-foot{color:#888880}
+.eco-foot b{color:#111}
+.eco-card:hover .eco-foot b{color:var(--accent)}
+.feature{
+  background:#111;
+  border-color:#111;
+  box-shadow:0 24px 60px rgba(0,0,0,.10);
+}
+.feature-copy{color:#fff}
+.feature-copy h3{color:#fff}
+.feature-copy p{color:#c9c9c2}
+.feature-list{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.12)}
+.feature-list div{background:#171717;color:#fff}
+.feature-list span{color:#a8a8a1}
+.feature-art{
+  background:
+    radial-gradient(circle at 60% 28%,rgba(255,204,0,.18),transparent 22%),
+    linear-gradient(145deg,#202020,#0b0b0b);
+}
+.feature-art:before{
+  border-color:rgba(255,255,255,.13);
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+}
+.feature-art .monogram{color:rgba(255,204,0,.94);text-shadow:30px 30px 0 rgba(255,255,255,.035)}
+.feature-art .caption{color:#b8b8b1}
+.feature-art .caption i{background:var(--accent)}
+.value-row{border-top-color:var(--line)}
+.value-no{color:#8a8a83}
+.value-row h4{color:#111}
+.value-row p{color:#6b6b64}
+.value-arrow{color:#77776f}
+.values-note{background:#111;color:#fff;border-color:#111;box-shadow:0 18px 42px rgba(0,0,0,.08)}
+.values-note h4{color:#fff}
+.values-note p{color:#c8c8c1}
+.values-note .mini{border-top-color:rgba(255,255,255,.12);color:#9a9a93}
+.values-note .tag{border-color:rgba(255,255,255,.16);color:#c2c2bb}
+.timeline{border-left-color:var(--line-strong)}
+.t-item:before{background:#fff;border-color:#99998f}
+.t-item:first-child:before{border-color:#A67A00;box-shadow:0 0 15px rgba(166,122,0,.18)}
+.t-item h4{color:#111}
+.t-item p{color:#696962}
+.story-card{background:#111;border-color:#111;box-shadow:0 18px 42px rgba(0,0,0,.08)}
+.story-card:before{color:rgba(255,255,255,.035)}
+.story-card .tag{border-color:rgba(255,255,255,.16);color:#bdbdb6}
+.story-card h3{color:#fff}
+.story-card p{color:#c4c4bd}
+.people-card{background:#fff;border-color:var(--line);box-shadow:0 14px 35px rgba(0,0,0,.05)}
+.portrait{background:linear-gradient(160deg,#222,#111 63%,#2a2a25)}
+.portrait:before{border-color:rgba(255,204,0,.35);color:rgba(255,204,0,.70)}
+.portrait-fallback{color:#c6ac54}
+.people-card-copy{background:#fff}
+.people-card-copy h3{color:#111}
+.people-card-copy p{color:#686862}
+.people-text blockquote{color:#111}
+.people-text blockquote em{color:#A67A00}
+.people-text .foot{border-top-color:var(--line);color:#77776f}
+.insights-head .section-intro{color:#666660}
+.contact{
+  background:#111;
+  border-color:#111;
+  box-shadow:0 24px 60px rgba(0,0,0,.10);
+}
+.contact-main h2,.contact-main p,.contact-main{color:#fff}
+.contact-main p{color:#c9c9c2}
+.contact-side{border-left-color:rgba(255,255,255,.12);background:#171717}
+.contact-side .label{color:#9a9a93}
+.contact-side a{color:#fff}
+.contact-side small{color:#a5a59e}
+.footer{border-top-color:var(--line);color:#111}
+.footer-brand p{color:#77776f}
+.footer-links a{color:#666660}
+.footer-bottom{border-top-color:var(--line);color:#77776f}
+.modal{background:rgba(0,0,0,.62)}
+.modal-box{background:#fff;color:#111;border-color:rgba(16,16,16,.16);box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.modal-head h3{color:#111}
+.modal-close{background:#111;color:#fff;border-color:#111}
+.modal-body{color:#5f5f58}
+#toast{background:var(--accent);color:#111;box-shadow:0 10px 35px rgba(0,0,0,.18)}
+.lang-switch{border-color:rgba(16,16,16,.14);background:#111;box-shadow:0 5px 18px rgba(0,0,0,.10)}
+.lang-btn{color:#fff}
+.lang-btn:hover{background:rgba(255,255,255,.08)}
+.lang-btn.active{background:rgba(255,204,0,.18);box-shadow:inset 0 0 0 1px rgba(255,204,0,.38),0 4px 14px rgba(0,0,0,.10)}
+.menu-toggle:before{background:radial-gradient(circle at 50% 20%,rgba(255,204,0,.14),transparent 50%)}
+.menu-toggle.is-open{background:var(--accent);border-color:var(--accent)}
+.menu-toggle.is-open span{background:#111}
+.hero-title-main,.hero-title-em{background:var(--accent);color:#111}
+
+@media(max-width:760px){
+  .menu{background:#fff;border-color:var(--line);box-shadow:0 25px 60px rgba(0,0,0,.14)}
+  .menu a{color:#111;border-bottom-color:rgba(16,16,16,.08)}
+  .menu a:hover{background:rgba(0,0,0,.04)}
+  .menu-toggle{background:#111;border-color:#111}
+  .menu-toggle.is-open{background:var(--accent);border-color:var(--accent)}
+  .contact-side{border-left:0;border-top-color:rgba(255,255,255,.12)}
+}
+
+/* === HMH dual theme system === */
+:root{
+  --brand-yellow:#ffcc00;
+  --theme-radius:18px;
+}
+html{color-scheme:dark}
+html[data-theme="dark"]{
+  --bg:#111f32;
+  --bg-2:#16263b;
+  --surface:#17283e;
+  --surface-2:#1c3048;
+  --text:#f7f7f4;
+  --muted:#aeb8c5;
+  --line:rgba(255,255,255,.12);
+  --line-strong:rgba(255,255,255,.24);
+  --accent:#ffcc00;
+  --accent-2:#e3ad00;
+  --warm:#ffe98a;
+  --glow:#ffcc00;
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#ffffff;
+  --bg-2:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#f4f4f2;
+  --text:#111111;
+  --muted:#666666;
+  --line:rgba(17,17,17,.12);
+  --line-strong:rgba(17,17,17,.24);
+  --accent:#ffcc00;
+  --accent-2:#e3ad00;
+  --warm:#fff0a3;
+  --glow:#ffcc00;
+  color-scheme:light;
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 5%,rgba(255,204,0,.12),transparent 23%),
+    radial-gradient(circle at 90% 8%,rgba(255,255,255,.035),transparent 24%),
+    var(--bg);
+  color:var(--text);
+}
+body:before{
+  background:linear-gradient(120deg,rgba(255,255,255,.02),transparent 35%,rgba(255,204,0,.025) 65%,transparent 100%);
+}
+::selection{background:var(--brand-yellow);color:#111}
+.progress{background:var(--brand-yellow);box-shadow:0 0 18px rgba(255,204,0,.35)}
+.grid-bg{opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px)}
+.orb{background:radial-gradient(circle,rgba(255,204,0,.13),rgba(255,255,255,.025) 38%,transparent 70%)}
+
+.header{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(20px) saturate(120%);-webkit-backdrop-filter:blur(20px) saturate(120%)}
+.header.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px rgba(0,0,0,.16)}
+.logo{display:flex;align-items:center}
+.brand-logo{width:154px;height:42px;display:block;object-fit:contain;object-position:left center;transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.logo:hover .brand-logo{transform:translateY(-1px)}
+
+.menu a{color:var(--text)}
+.menu a:after{background:var(--brand-yellow)}
+.pill{color:var(--text);background:var(--surface);border-color:var(--line-strong);box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.pill:hover{border-color:rgba(255,204,0,.58);box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.pill.primary{background:var(--brand-yellow);color:#111;border-color:var(--brand-yellow);box-shadow:0 10px 28px rgba(255,204,0,.18)}
+.dot{background:var(--brand-yellow);box-shadow:0 0 13px rgba(255,204,0,.42)}
+.eyebrow,.hero-copy,.statement,.scroll-note,.section-intro,.about-side small,.vertical p,.eco-card p,.insight p,.value-row p,.t-item p,.people-card-copy p,.contact-main p,.modal-body{color:var(--muted)}
+.hero h1,.section-title,.value-row h4,.people-card-copy h3,.people-text blockquote,.about-side blockquote{color:var(--text)}
+.hero h1 em{color:var(--brand-yellow);text-shadow:0 0 30px rgba(255,204,0,.10)}
+.scroll-line{background:var(--line-strong)}
+.hero-card{border-top-color:var(--line)}
+.hero-card span{color:var(--muted)}
+
+.hero-art{background:linear-gradient(145deg,#0d1727 0%,var(--bg) 58%,#182b42 100%);border-color:var(--line);box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.hero-art:before{background:radial-gradient(circle,var(--brand-yellow) 0%,rgba(255,204,0,.14) 30%,transparent 69%)}
+.hero-art:after{background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.07) 28%,transparent 69%)}
+.core-ring{border-color:rgba(255,255,255,.18);box-shadow:inset 0 0 50px rgba(255,204,0,.08),0 0 0 30px rgba(255,255,255,.018),0 0 55px rgba(255,204,0,.07)}
+.core-ring:before{border-color:rgba(255,204,0,.58)}
+.core-ring:after{border-color:rgba(255,255,255,.32)}
+.core-label strong{color:#fff}
+.core-label span{color:#bfc6cf}
+
+.kicker,.people-card-copy .role,.t-year{color:var(--brand-yellow)}
+.about-main,.about-side,.people-text,.people-card{background:var(--surface);border-color:var(--line);box-shadow:0 14px 35px rgba(0,0,0,.07)}
+.about-main p{color:var(--text)}
+.about-main p strong{color:var(--brand-yellow)}
+.quote-mark{color:rgba(255,204,0,.28)}
+.about-side blockquote{color:var(--text)}
+.meta-row,.verticals,.feature-list{background:var(--line);border-color:var(--line)}
+.meta-item{background:var(--surface-2);color:var(--text)}
+.meta-item span{color:var(--muted)}
+
+.vertical{background:var(--surface);color:var(--text)}
+.vertical:hover{background:var(--brand-yellow);color:#111}
+.vertical p{color:var(--muted)}
+.vertical:hover p{color:#111}
+.vertical-index{color:var(--muted)}
+.vertical:hover .vertical-index{color:#111}
+.vertical .arrow{color:var(--brand-yellow)}
+.vertical:hover .arrow{color:#111}
+.filter-btn{background:var(--surface);color:var(--muted);border-color:var(--line)}
+.filter-btn.active{background:var(--brand-yellow);color:#111;border-color:var(--brand-yellow);box-shadow:0 8px 22px rgba(255,204,0,.16)}
+.eco-card,.insight{background:var(--surface);border-color:var(--line);color:var(--text);box-shadow:0 10px 28px rgba(0,0,0,.05)}
+.eco-card:hover,.insight:hover{background:var(--surface-2);color:var(--text);border-color:rgba(255,204,0,.35)}
+.brand-badge{color:var(--muted);border-color:var(--line)}
+.eco-icon{background:#111;color:var(--brand-yellow);border-color:#111}
+.eco-card h4,.insight h4{color:var(--text)}
+.eco-card p,.insight p{color:var(--muted)}
+.eco-foot{color:var(--muted)}
+.eco-foot b{color:var(--text)}
+.eco-card:hover .eco-foot b{color:var(--brand-yellow)}
+
+.feature{background:var(--bg-2);border-color:var(--line);box-shadow:0 24px 60px rgba(0,0,0,.14)}
+.feature-copy{color:var(--text)}
+.feature-copy h3{color:var(--text)}
+.feature-copy p{color:var(--muted)}
+.feature-list div{background:var(--surface-2);color:var(--text)}
+.feature-list span{color:var(--muted)}
+.feature-art{background:radial-gradient(circle at 60% 28%,rgba(255,204,0,.16),transparent 22%),linear-gradient(145deg,#0d1727,#0a0f18)}
+.feature-art:before{border-color:rgba(255,255,255,.13);background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px)}
+.feature-art .monogram{color:rgba(255,204,0,.94);text-shadow:30px 30px 0 rgba(255,255,255,.035)}
+.feature-art .caption{color:#b9c0ca}
+.feature-art .caption i{background:var(--brand-yellow)}
+
+.value-row{border-top-color:var(--line)}
+.value-no,.value-arrow{color:var(--muted)}
+.values-note,.story-card,.contact{background:var(--surface-2);color:var(--text);border-color:var(--line);box-shadow:0 18px 42px rgba(0,0,0,.09)}
+.values-note h4,.story-card h3{color:var(--text)}
+.values-note p,.story-card p{color:var(--muted)}
+.values-note .mini{border-top-color:var(--line);color:var(--muted)}
+.values-note .tag,.story-card .tag{border-color:var(--line);color:var(--muted)}
+.timeline{border-left-color:var(--line-strong)}
+.t-item:before{background:var(--bg);border-color:var(--muted)}
+.t-item:first-child:before{border-color:var(--brand-yellow);box-shadow:0 0 15px rgba(255,204,0,.22)}
+.story-card:before{color:rgba(255,255,255,.025)}
+
+.portrait{background:linear-gradient(160deg,#263951,var(--bg) 63%,#20344c)}
+.portrait:before{border-color:rgba(255,204,0,.34);color:rgba(255,204,0,.72)}
+.portrait-fallback{color:#d7bb55}
+.people-card-copy{background:var(--surface)}
+.people-text blockquote em{color:var(--brand-yellow)}
+.people-text .foot{border-top-color:var(--line);color:var(--muted)}
+
+.contact{background:linear-gradient(140deg,#152940,var(--bg) 55%,#172c44)}
+.contact-main h2,.contact-main,.contact-side a{color:var(--text)}
+.contact-main p{color:var(--muted)}
+.contact-side{border-left-color:var(--line);background:rgba(0,0,0,.08)}
+.contact-side .label,.contact-side small{color:var(--muted)}
+.footer{border-top-color:var(--line);color:var(--text)}
+.footer-brand p,.footer-links a,.footer-bottom{color:var(--muted)}
+.footer-bottom{border-top-color:var(--line)}
+
+.modal{background:rgba(3,8,14,.72)}
+.modal-box{background:var(--surface);color:var(--text);border-color:var(--line-strong);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.modal-head h3{color:var(--text)}
+.modal-close{background:var(--surface-2);color:var(--text);border-color:var(--line)}
+#toast{background:var(--brand-yellow);color:#111;box-shadow:0 10px 35px rgba(0,0,0,.20)}
+
+.lang-switch{border-color:var(--line);background:var(--surface-2);box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.lang-btn{color:var(--text)}
+.lang-btn.active{background:rgba(255,204,0,.16);box-shadow:inset 0 0 0 1px rgba(255,204,0,.38),0 4px 14px rgba(0,0,0,.10)}
+
+.theme-toggle{position:relative;width:42px;height:38px;display:grid;place-items:center;flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:var(--surface-2);color:var(--text);overflow:hidden;box-shadow:0 5px 18px rgba(0,0,0,.08);transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease)}
+.theme-toggle:hover{transform:translateY(-1px);border-color:rgba(255,204,0,.52);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.theme-icon{position:absolute;font-size:17px;line-height:1;transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.theme-icon-moon{opacity:1;transform:translateY(0) rotate(0deg);color:#fff}
+.theme-icon-sun{opacity:0;transform:translateY(12px) rotate(-45deg);color:#111}
+html[data-theme="light"] .theme-icon-moon{opacity:0;transform:translateY(-12px) rotate(45deg)}
+html[data-theme="light"] .theme-icon-sun{opacity:1;transform:translateY(0) rotate(0deg)}
+
+.hero-title-main,.hero-title-em{background:var(--brand-yellow);color:#111}
+.menu-toggle.is-open{background:var(--brand-yellow);border-color:var(--brand-yellow)}
+.menu-toggle.is-open span{background:#111}
+
+html[data-theme="light"] body{
+  background:radial-gradient(circle at 10% 5%,rgba(255,204,0,.10),transparent 23%),linear-gradient(135deg,#fff 0%,#fff 60%,#f5f5f2 100%);
+}
+html[data-theme="light"] body:before{background:linear-gradient(120deg,rgba(0,0,0,.012),transparent 35%,rgba(255,204,0,.025) 65%,transparent 100%)}
+html[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px)}
+html[data-theme="light"] .orb{background:radial-gradient(circle,rgba(255,204,0,.18),rgba(0,0,0,.025) 38%,transparent 70%)}
+html[data-theme="light"] .header{background:rgba(255,255,255,.88)}
+html[data-theme="light"] .hero h1 em{color:#111;text-shadow:none}
+html[data-theme="light"] .hero-art{background:linear-gradient(145deg,#111 0%,#191919 56%,#23231e 100%)}
+html[data-theme="light"] .vertical:hover{background:#111;color:#fff}
+html[data-theme="light"] .vertical:hover p{color:#d6d6d1}
+html[data-theme="light"] .vertical:hover .vertical-index{color:#d6d6d1}
+html[data-theme="light"] .vertical:hover .arrow{color:var(--brand-yellow)}
+html[data-theme="light"] .eco-card:hover,html[data-theme="light"] .insight:hover{background:#111;color:#fff;border-color:#111}
+html[data-theme="light"] .eco-card:hover h4,html[data-theme="light"] .insight:hover h4{color:#fff}
+html[data-theme="light"] .eco-card:hover p,html[data-theme="light"] .insight:hover p{color:#d6d6d1}
+html[data-theme="light"] .eco-card:hover .eco-foot b{color:var(--brand-yellow)}
+html[data-theme="light"] .values-note,html[data-theme="light"] .story-card,html[data-theme="light"] .contact{background:#111;color:#fff;border-color:#111}
+html[data-theme="light"] .values-note h4,html[data-theme="light"] .story-card h3,html[data-theme="light"] .contact-main h2,html[data-theme="light"] .contact-main{color:#fff}
+html[data-theme="light"] .values-note p,html[data-theme="light"] .story-card p,html[data-theme="light"] .contact-main p{color:#c9c9c2}
+html[data-theme="light"] .contact-side{background:#171717;border-left-color:rgba(255,255,255,.12)}
+html[data-theme="light"] .contact-side a{color:#fff}
+html[data-theme="light"] .portrait{background:linear-gradient(160deg,#222,#111 63%,#2a2a25)}
+html[data-theme="light"] .menu{background:#fff}
+html[data-theme="light"] .menu a{color:#111;border-bottom-color:rgba(16,16,16,.08)}
+
+@media(max-width:760px){
+  .brand-logo{width:132px;height:38px}
+  .theme-toggle{width:40px;height:36px}
+  .nav-actions{gap:7px}
+  .menu{background:var(--surface);border-color:var(--line);box-shadow:0 25px 60px rgba(0,0,0,.2)}
+  .menu a{color:var(--text);border-bottom-color:var(--line)}
+  .menu a:hover{background:rgba(255,204,0,.08)}
+  html[data-theme="light"] .menu{background:#fff}
+  html[data-theme="light"] .menu a{color:#111}
+}
+
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="grid-bg"></div><div class="orb"></div>
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="HMH Group Home">
+      <img class="brand-logo" src="logo.svg" alt="HMH Group" />
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#about" data-i18n="nav.about">About</a><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a><a href="#agency" data-i18n="nav.agency">HMH Agency</a><a href="#values" data-i18n="nav.values">Values</a><a href="#story" data-i18n="nav.story">Our Story</a><a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Aktifkan tema terang" title="Tema terang"><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span></button><div class="lang-switch" role="group" aria-label="Language switcher"><button class="lang-btn active" id="langID" type="button" aria-label="Bahasa Indonesia" title="Bahasa Indonesia"><span class="flag flag-id" aria-hidden="true"><i></i></span></button><button class="lang-btn" id="langEN" type="button" aria-label="English" title="English"><span class="flag flag-en" aria-hidden="true"><i></i></span></button></div><a class="pill nav-optional" href="#ecosystem" data-nav-explore>Explore ecosystem</a><a class="pill primary nav-optional" href="#contact" data-nav-contact>Start a conversation</a><button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button></div>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container">
+    <div class="hero-wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Independent business ecosystem · Indonesia</span></div>
+        <div class="hero-title-box"><h1 data-i18n="hero.title"><span class="hero-title-main">Build boldly.</span> <span class="hero-title-em">Think beyond.</span></h1></div>
+        <p class="hero-copy" data-i18n="hero.copy">HMH Group adalah ekosistem bisnis yang menghubungkan creative & digital services, technology, capital, dan venture untuk menciptakan pertumbuhan jangka panjang.</p>
+        <div class="hero-cta"><a href="#ecosystem" class="pill primary" data-i18n="hero.cta1">Explore HMH ecosystem →</a><a href="#about" class="pill" data-i18n="hero.cta2">Discover the group</a></div>
+        <div class="scroll-note"><span class="scroll-line"></span><span data-i18n="hero.scroll">Scroll to explore</span></div>
+      </div>
+      <div class="hero-side reveal">
+        <p class="statement" data-i18n="hero.statement">We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.</p>
+        <div class="hero-card"><div><b>HMH Group</b><span data-i18n="hero.holding">Holding company</span></div><div>01</div></div>
+        <div class="hero-card"><div><b>Digital · Creative · Capital</b><span data-i18n="hero.core">Core ecosystem</span></div><div>02</div></div>
+        <div class="hero-card"><div><b data-i18n="hero.founder">Founder & CEO</b><span>Haidar Muttaqin Hakim</span></div><div>03</div></div>
+      </div>
+    </div>
+    <div class="hero-art reveal" aria-hidden="true"><div class="art-grid"></div><div class="art-core"><div class="core-ring"></div><div class="core-label"><strong>HMH</strong><span data-i18n="hero.coreLabel">Build the next</span></div></div></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">01 · About HMH Group</div><h2 class="section-title">One group.<br>Multiple ways to grow.</h2></div><p class="section-intro" data-i18n="about.intro">HMH Group dibangun sebagai holding company yang mengembangkan dan menghubungkan bisnis, kapabilitas, dan peluang lintas sektor.</p></div>
+    <div class="about-grid">
+      <article class="about-main reveal"><p><strong>HMH Group</strong> membawa cara berpikir holding ke dunia bisnis yang semakin digital: membangun unit yang fokus, berbagi kapabilitas, dan membuka ruang untuk kolaborasi antar-ekosistem.</p><div class="meta-row"><div class="meta-item"><b>2024</b><span data-i18n="about.established">Group established</span></div><div class="meta-item"><b>Indonesia</b><span data-i18n="about.market">Home market</span></div><div class="meta-item"><b>Agency → Capital</b><span data-i18n="about.spectrum">Growth spectrum</span></div><div class="meta-item"><b>Long-term</b><span data-i18n="about.value">Value creation</span></div></div></article>
+      <aside class="about-side reveal"><div><div class="quote-mark">“</div><blockquote>We create synergy, foster innovation, and help ambitious businesses move forward.</blockquote></div><small>HMH Group · Corporate positioning</small></aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ecosystem">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">02 · Business ecosystem</div><h2 class="section-title">A portfolio built around opportunity.</h2></div><p class="section-intro" data-i18n="ecosystem.intro">Seperti arsitektur sebuah group modern, tiap vertical punya fokus sendiri namun dirancang untuk saling menguatkan.</p></div>
+    <div class="verticals reveal">
+      <article class="vertical"><div class="vertical-index"><span>01 / DIGITAL</span><span class="arrow">↗</span></div><div><h3>Digital & Creative</h3><p>Brand, growth, content, web, design, dan digital execution melalui HMH Agency.</p></div></article>
+      <article class="vertical"><div class="vertical-index"><span>02 / TECHNOLOGY</span><span class="arrow">↗</span></div><div><h3>Technology & Products</h3><p>Memikirkan produk digital, automation, software, dan infrastruktur yang membuat bisnis lebih adaptif.</p></div></article>
+      <article class="vertical"><div class="vertical-index"><span>03 / CAPITAL</span><span class="arrow">↗</span></div><div><h3>Capital & Investments</h3><p>Perspektif investasi untuk mengidentifikasi peluang, mengelola risiko, dan membangun nilai jangka panjang.</p></div></article>
+      <article class="vertical"><div class="vertical-index"><span>04 / VENTURES</span><span class="arrow">↗</span></div><div><h3>New Ventures</h3><p>Menjadi ruang inkubasi bagi ide, brand, dan bisnis baru yang punya potensi untuk tumbuh bersama ekosistem.</p></div></article>
+    </div>
+
+    <div class="kicker" style="margin-top:72px" data-i18n="ecosystem.portfolio">Portfolio map</div>
+    <div class="eco-top reveal" id="filters"><button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button><button class="filter-btn" data-filter="digital" data-i18n="filter.digital">Digital & Creative</button><button class="filter-btn" data-filter="capital" data-i18n="filter.capital">Capital</button><button class="filter-btn" data-filter="venture" data-i18n="filter.venture">Venture</button></div>
+    <div class="eco-grid" id="ecoGrid">
+      <article class="eco-card reveal" data-cat="digital"><div><div class="eco-topline"><div class="brand-badge">Operating company</div><div class="eco-icon">A</div></div><h4>HMH Agency</h4><p>Digital marketing, web development, design, content creation, dan digital growth untuk bisnis yang ingin tampil dan tumbuh lebih kuat.</p></div><div class="eco-foot"><span>Digital & Creative</span><b>Explore ↗</b></div></article>
+      <article class="eco-card reveal" data-cat="capital"><div><div class="eco-topline"><div class="brand-badge">Investment arm</div><div class="eco-icon">C</div></div><h4>HMH Capital</h4><p>Investment-focused platform untuk mengeksplorasi trading, investing, dan peluang pertumbuhan dengan horizon jangka panjang.</p></div><div class="eco-foot"><span>Capital</span><b>Explore ↗</b></div></article>
+      <article class="eco-card reveal" data-cat="venture"><div><div class="eco-topline"><div class="brand-badge">Future businesses</div><div class="eco-icon">V</div></div><h4>HMH Ventures</h4><p>Ruang untuk membangun, menguji, dan mengembangkan business ideas baru di dalam atau di sekitar ekosistem HMH.</p></div><div class="eco-foot"><span>Venture</span><b>Explore ↗</b></div></article>
+      <article class="eco-card reveal" data-cat="digital"><div><div class="eco-topline"><div class="brand-badge">Capabilities</div><div class="eco-icon">W</div></div><h4>Web & Commerce</h4><p>Kapabilitas web, ecommerce, UX, dan digital presence sebagai fondasi bagi brand yang ingin bergerak cepat.</p></div><div class="eco-foot"><span>Digital & Creative</span><b>Capability</b></div></article>
+      <article class="eco-card reveal" data-cat="digital"><div><div class="eco-topline"><div class="brand-badge">Capabilities</div><div class="eco-icon">M</div></div><h4>Content & Media</h4><p>Creative content dan visual storytelling untuk memperkuat hubungan brand dengan audience di era digital.</p></div><div class="eco-foot"><span>Digital & Creative</span><b>Capability</b></div></article>
+      <article class="eco-card reveal" data-cat="capital"><div><div class="eco-topline"><div class="brand-badge">Strategy</div><div class="eco-icon">S</div></div><h4>Strategic Growth</h4><p>Perspektif lintas unit yang menyatukan strategy, execution, partnerships, dan discipline untuk pertumbuhan yang terukur.</p></div><div class="eco-foot"><span>Capital & Strategy</span><b>Capability</b></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="agency">
+  <div class="container">
+    <div class="feature reveal">
+      <div class="feature-copy"><div class="kicker" data-i18n="agency.kicker">03 · Flagship business</div><h3>HMH Agency<br>moves brands forward.</h3><p>HMH Agency adalah digital agency dalam ekosistem HMH yang menggabungkan strategy, creative, design, technology, dan content untuk membantu bisnis membangun presence digital yang relevan.</p><div class="feature-list"><div><b>Digital Marketing</b><span>01</span></div><div><b>Web Development</b><span>02</span></div><div><b>Design & Branding</b><span>03</span></div><div><b>Content Creation</b><span>04</span></div><div><b>SEO & Digital Growth</b><span>05</span></div></div><div class="hero-cta"><a class="pill primary" href="mailto:hmhgroup.id@gmail.com?subject=Business%20Inquiry%20HMH%20Agency">Talk to HMH Agency →</a><button class="pill" data-modal="agency">View agency profile</button></div></div>
+      <div class="feature-art"><div class="monogram">A</div><div class="caption"><i></i> HMH Agency · Digital growth partner</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="values">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker">04 · Values</div><h2 class="section-title">How we choose to build.</h2></div><p class="section-intro" data-i18n="values.intro">Nilai ini menjadi operating principles: bukan sekadar kata di dinding, tapi cara memilih partner, peluang, dan pekerjaan.</p></div>
+    <div class="values">
+      <div class="values-main reveal">
+        <div class="value-row"><div class="value-no">01</div><div><h4>Integrity</h4><p>Jujur terhadap data, peluang, risiko, dan janji yang kita buat.</p></div><div class="value-arrow">↗</div></div>
+        <div class="value-row"><div class="value-no">02</div><div><h4>Excellence</h4><p>Menaruh perhatian pada detail dan terus meningkatkan standar eksekusi.</p></div><div class="value-arrow">↗</div></div>
+        <div class="value-row"><div class="value-no">03</div><div><h4>Pioneering</h4><p>Berani mencoba cara baru ketika cara lama tidak lagi cukup.</p></div><div class="value-arrow">↗</div></div>
+        <div class="value-row"><div class="value-no">04</div><div><h4>Synergy</h4><p>Membangun bisnis dengan keyakinan bahwa kolaborasi yang tepat menciptakan leverage.</p></div><div class="value-arrow">↗</div></div>
+        <div class="value-row"><div class="value-no">05</div><div><h4>Long-term thinking</h4><p>Mengejar nilai yang bertahan lebih lama daripada hasil sesaat.</p></div><div class="value-arrow">↗</div></div>
+      </div>
+      <aside class="values-note reveal"><div><span class="tag" data-i18n="values.tag">The HMH way</span><h4 style="margin-top:24px">Build with ambition.<br>Operate with discipline.</h4><p>Setiap unit bebas bergerak sesuai pasarnya, namun tetap terhubung oleh prinsip, governance, dan tujuan pertumbuhan yang sama.</p></div><div class="mini" data-i18n="values.mini">Independent units · Shared perspective · One ecosystem</div></aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker" data-i18n="story.kicker">05 · Our story</div><h2 class="section-title">From a digital beginning to a broader ecosystem.</h2></div><p class="section-intro" data-i18n="story.intro">Jejak HMH dimulai dari digital capability dan berkembang menuju visi yang lebih luas: membangun bisnis, brand, dan capital dalam satu ekosistem.</p></div>
+    <div class="story">
+      <div class="timeline reveal">
+        <div class="t-item"><div class="t-year">2024 · Foundation</div><h4>HMH Group takes shape.</h4><p>HMH Group mulai dibangun sebagai holding company dengan visi menghubungkan agency, digital capabilities, dan investment thinking.</p></div>
+        <div class="t-item"><div class="t-year">2024 → 2025 · Capability</div><h4>Digital becomes the operating engine.</h4><p>HMH Agency menjadi pintu masuk ke ecosystem: website, digital marketing, design, content, dan growth services.</p></div>
+        <div class="t-item"><div class="t-year">Next · Expansion</div><h4>Capital and ventures expand the map.</h4><p>Ekosistem diarahkan untuk terus berkembang melalui investment perspective, new ventures, partnerships, dan produk digital.</p></div>
+      </div>
+      <aside class="story-card reveal"><span class="tag" data-i18n="story.tag">Corporate direction</span><h3>Small enough to move.<br>Ambitious enough to matter.</h3><p>HMH dirancang untuk tetap gesit sebagai perusahaan bertumbuh, namun berpikir layaknya group yang ingin membangun nilai lintas generasi bisnis.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="people">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="kicker" data-i18n="people.kicker">06 · Leadership</div><h2 class="section-title">Founder-led. Future-focused.</h2></div><p class="section-intro" data-i18n="people.intro">Leadership HMH berangkat dari kombinasi digital experience, entrepreneurial drive, dan keinginan membangun ecosystem jangka panjang.</p></div>
+    <div class="people">
+      <article class="people-card reveal"><div class="portrait" id="founderPortrait"><img src="founder.jpg" alt="Foto Haidar Muttaqin Hakim, Founder & CEO HMH Group" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'"><span class="portrait-fallback">Tambahkan foto sebagai <strong>founder.jpg</strong><br>di folder yang sama dengan file HTML</span></div><div class="people-card-copy"><div class="role" data-i18n="people.role">Founder & CEO · HMH Group</div><h3>Haidar Muttaqin Hakim</h3><p data-i18n="people.bio">Founder & CEO HMH Group, dengan latar pengalaman di web development, digital, dan community / technology initiatives.</p></div></article>
+      <aside class="people-text reveal"><blockquote>“Build something useful. <em>Then build it better.</em>”</blockquote><div class="foot" data-i18n="people.note">Leadership note · HMH Group</div></aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="insights">
+  <div class="container">
+    <div class="insights-head reveal"><div><div class="kicker">07 · Insights</div><h2 class="section-title">Ideas behind the work.</h2></div><p class="section-intro" data-i18n="insights.intro">Ruang untuk cerita, perspectives, project notes, dan pemikiran yang akan membentuk HMH ke depan.</p></div>
+    <div class="insights-grid">
+      <article class="insight reveal"><div class="meta"><span>Strategy</span><span>01</span></div><div><h4>Why an ecosystem beats isolated capabilities.</h4><p>Bagaimana digital, capital, dan operations bisa saling menguatkan.</p></div></article>
+      <article class="insight reveal"><div class="meta"><span>Digital</span><span>02</span></div><div><h4>Building a brand that earns attention.</h4><p>Brand modern membutuhkan consistency, speed, dan experience yang menyatu.</p></div></article>
+      <article class="insight reveal"><div class="meta"><span>Venture</span><span>03</span></div><div><h4>From idea to business: the HMH lens.</h4><p>Kerangka sederhana untuk melihat peluang, validasi, dan execution.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact reveal">
+      <div class="contact-main"><div class="kicker" data-i18n="contact.kicker">08 · Contact</div><h2 class="section-title">Let’s build what comes next.</h2><p data-i18n="contact.copy">Untuk partnership, project, strategic collaboration, investment conversation, atau sekadar memperkenalkan peluang baru, hubungi HMH Group.</p><div class="contact-actions"><a class="pill primary" href="mailto:hmhgroup.id@gmail.com?subject=HMH%20Group%20Business%20Inquiry">Email HMH Group →</a><button class="pill" id="copyEmail" data-i18n="contact.copyEmail">Copy email</button><a class="pill" href="https://www.linkedin.com/in/haidar-muttaqin-hakim/" target="_blank" rel="noopener">Founder LinkedIn ↗</a></div></div>
+      <div class="contact-side"><div><div class="label" data-i18n="contact.general">General enquiries</div><a href="mailto:hmhgroup.id@gmail.com">hmhgroup.id@gmail.com</a><small>Indonesia · Digital · Creative · Capital · Ventures</small></div><div><div class="label">Instagram</div><a href="https://www.instagram.com/hmh_group.id/" target="_blank" rel="noopener">@hmh_group.id ↗</a></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="logo"><img class="brand-logo" src="logo.svg" alt="HMH Group" /></div><p>Holding company & business ecosystem focused on digital, creative, technology, capital, and ventures.</p></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.explore">Explore</div><div class="footer-links"><a href="#about" data-i18n="nav.about">About</a><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a><a href="#agency">Agency</a><a href="#values" data-i18n="nav.values">Values</a><a href="#contact" data-i18n="nav.contact">Contact</a></div></div><div><div class="kicker" style="margin-bottom:10px" data-i18n="footer.connect">Connect</div><div class="footer-links"><a href="https://www.linkedin.com/in/haidar-muttaqin-hakim/" target="_blank">LinkedIn</a><a href="https://www.instagram.com/hmh_group.id/" target="_blank">Instagram</a></div></div></div><div class="footer-bottom"><div>© <span id="year"></span> HMH Group. All rights reserved.</div><div data-i18n="footer.built">Built as a single-file responsive experience.</div></div></div></footer>
+
+<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h3 id="modalTitle">HMH Agency</h3><button class="modal-close" id="modalClose" aria-label="Tutup">✕</button></div><div class="modal-body" id="modalBody"></div></div></div>
+<div id="toast">Email copied.</div>
+<script>
+(function(){
+  const header=document.getElementById('header');
+  const menu=document.getElementById('menu');
+  const menuToggle=document.getElementById('menuToggle');
+  const progress=document.getElementById('progress');
+  const year=document.getElementById('year');
+  year.textContent=new Date().getFullYear();
+
+  const langID=document.getElementById('langID');
+  const langEN=document.getElementById('langEN');
+  const themeToggle=document.getElementById('themeToggle');
+  const root=document.documentElement;
+  function updateThemeButton(){
+    const dark=root.dataset.theme!=='light';
+    themeToggle.setAttribute('aria-label',dark?'Aktifkan tema terang':'Aktifkan tema gelap');
+    themeToggle.setAttribute('title',dark?'Tema terang':'Tema gelap');
+    const metaTheme=document.querySelector('meta[name="theme-color"]');
+    if(metaTheme)metaTheme.setAttribute('content',dark?'#111f32':'#ffffff');
+  }
+  function setTheme(theme){
+    const next=theme==='light'?'light':'dark';
+    root.dataset.theme=next;
+    try{localStorage.setItem('hmh-theme',next);}catch(e){}
+    updateThemeButton();
+  }
+  updateThemeButton();
+  themeToggle.addEventListener('click',()=>setTheme(root.dataset.theme==='light'?'dark':'light'));
+  const translations={
+    id:{
+      'nav.about':'Tentang','nav.ecosystem':'Ekosistem','nav.agency':'HMH Agency','nav.values':'Nilai','nav.story':'Cerita Kami','nav.contact':'Kontak',
+      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.title':'<span class="hero-title-main">Bangun dengan berani.</span> <span class="hero-title-em">Berpikir melampaui.</span>','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
+      'about.intro':'HMH Group dibangun sebagai holding company yang mengembangkan dan menghubungkan bisnis, kapabilitas, dan peluang lintas sektor.','about.established':'Didirikan','about.market':'Pasar utama','about.spectrum':'Spektrum pertumbuhan','about.value':'Penciptaan nilai',
+      'ecosystem.intro':'Seperti arsitektur sebuah grup modern, tiap vertical memiliki fokus sendiri namun dirancang untuk saling menguatkan.','ecosystem.portfolio':'Peta portofolio',
+      'filter.all':'Semua','filter.digital':'Digital & Kreatif','filter.capital':'Modal','filter.venture':'Venture',
+      'agency.kicker':'03 · Bisnis unggulan','values.intro':'Nilai ini menjadi prinsip operasional: bukan sekadar kata di dinding, tetapi cara kami memilih partner, peluang, dan pekerjaan.','values.tag':'Cara HMH','values.mini':'Unit independen · Perspektif bersama · Satu ekosistem',
+      'story.kicker':'05 · Cerita kami','story.intro':'Jejak HMH dimulai dari kemampuan digital dan berkembang menuju visi yang lebih luas: membangun bisnis, brand, dan capital dalam satu ekosistem.','story.tag':'Arah korporasi',
+      'people.kicker':'06 · Kepemimpinan','people.intro':'Kepemimpinan HMH berangkat dari pengalaman digital, dorongan kewirausahaan, dan keinginan membangun ekosistem jangka panjang.','people.role':'Pendiri & CEO · HMH Group','people.bio':'Founder & CEO HMH Group, dengan latar pengalaman di web development, digital, dan community / technology initiatives.','people.note':'Catatan kepemimpinan · HMH Group',
+      'insights.kicker':'07 · Insight','insights.intro':'Ruang untuk cerita, perspektif, catatan proyek, dan pemikiran yang akan membentuk HMH ke depan.',
+      'contact.kicker':'08 · Kontak','contact.copy':'Untuk partnership, project, strategic collaboration, investment conversation, atau sekadar memperkenalkan peluang baru, hubungi HMH Group.','contact.copyEmail':'Salin email','contact.general':'Pertanyaan umum','footer.explore':'Jelajahi','footer.connect':'Terhubung','footer.built':'Dibangun sebagai pengalaman responsif dalam satu file.'
+    },
+    en:{
+      'nav.about':'About','nav.ecosystem':'Ecosystem','nav.agency':'HMH Agency','nav.values':'Values','nav.story':'Our Story','nav.contact':'Contact',
+      'hero.title':'<span class="hero-title-main">Build boldly.</span> <span class="hero-title-em">Think beyond.</span>','hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
+      'about.intro':'HMH Group is built as a holding company that develops and connects businesses, capabilities, and opportunities across sectors.','about.established':'Group established','about.market':'Home market','about.spectrum':'Growth spectrum','about.value':'Value creation',
+      'ecosystem.intro':'Like the architecture of a modern group, each vertical has its own focus while being designed to strengthen the others.','ecosystem.portfolio':'Portfolio map',
+      'filter.all':'All','filter.digital':'Digital & Creative','filter.capital':'Capital','filter.venture':'Venture',
+      'agency.kicker':'03 · Flagship business','values.intro':'These values are our operating principles: not words on a wall, but how we choose partners, opportunities, and work.','values.tag':'The HMH way','values.mini':'Independent units · Shared perspective · One ecosystem',
+      'story.kicker':'05 · Our story','story.intro':'HMH began with digital capability and is growing toward a broader vision: building businesses, brands, and capital within one ecosystem.','story.tag':'Corporate direction',
+      'people.kicker':'06 · Leadership','people.intro':'HMH leadership combines digital experience, entrepreneurial drive, and a long-term ambition to build an enduring ecosystem.','people.role':'Founder & CEO · HMH Group','people.bio':'Founder & CEO of HMH Group, with a background spanning web development, digital, and community / technology initiatives.','people.note':'Leadership note · HMH Group',
+      'insights.kicker':'07 · Insights','insights.intro':'A space for stories, perspectives, project notes, and ideas that will shape HMH going forward.',
+      'contact.kicker':'08 · Contact','contact.copy':'For partnerships, projects, strategic collaboration, investment conversations, or simply to introduce a new opportunity, contact HMH Group.','contact.copyEmail':'Copy email','contact.general':'General enquiries','footer.explore':'Explore','footer.connect':'Connect','footer.built':'Built as a single-file responsive experience.'
+    }
+  };
+  function renderI18nValue(el,value){
+    el.innerHTML=value;
+    el.classList.remove('lang-swap');
+    void el.offsetWidth;
+    el.classList.add('lang-swap');
+    window.setTimeout(()=>el.classList.remove('lang-swap'),190);
+  }
+  function applyLanguageNow(lang, animate=false){
+    const dict=translations[lang];
+    if(!dict) return;
+    document.documentElement.lang=lang==='id'?'id':'en';
+    document.documentElement.setAttribute('translate','no');
+    document.documentElement.classList.add('notranslate');
+
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key=el.getAttribute('data-i18n');
+      if(Object.prototype.hasOwnProperty.call(dict,key)) renderI18nValue(el,dict[key]);
+    });
+
+    document.querySelectorAll('[data-nav-explore]').forEach(el=>{
+      renderI18nValue(el, '<span class="dot"></span>'+(lang==='id'?'Jelajahi ekosistem':'Explore ecosystem'));
+    });
+    document.querySelectorAll('[data-nav-contact]').forEach(el=>{
+      renderI18nValue(el, lang==='id'?'Mulai percakapan':'Start a conversation');
+    });
+
+    // Translate the remaining headline/body copy that is intentionally kept as HTML for layout.
+    applyStaticLanguage(lang);
+
+    document.title=lang==='id'?'HMH Group — Membangun Bisnis. Menciptakan Dampak.':'HMH Group — Building Businesses. Creating Impact.';
+    const description=document.querySelector('meta[name="description"]');
+    if(description) description.setAttribute('content',lang==='id'?'HMH Group — ekosistem bisnis yang menghubungkan digital, creative, technology, capital, dan ventures.':'HMH Group — a business ecosystem connecting digital, creative, technology, capital, and ventures.');
+
+    langID.classList.toggle('active',lang==='id');
+    langEN.classList.toggle('active',lang==='en');
+    langID.setAttribute('aria-pressed',lang==='id');
+    langEN.setAttribute('aria-pressed',lang==='en');
+    localStorage.setItem('hmh-lang',lang);
+  }
+  function applyLanguage(lang, animate=true){
+    if(!translations[lang]) return;
+    if(animate){
+      document.body.dataset.languageSwitch='true';
+      window.setTimeout(()=>delete document.body.dataset.languageSwitch,220);
+    }
+    applyLanguageNow(lang,animate);
+  }
+  langID.addEventListener('click',()=>applyLanguage('id',true));
+  langEN.addEventListener('click',()=>applyLanguage('en',true));
+  const langDefaultVersion='2';
+  const savedLangVersion=localStorage.getItem('hmh-lang-default-version');
+  const savedLang=savedLangVersion===langDefaultVersion ? (localStorage.getItem('hmh-lang')||'en') : 'en';
+  localStorage.setItem('hmh-lang-default-version',langDefaultVersion);
+  const staticText={
+    id:{
+      '#about .section-title':'Satu grup.<br>Beragam cara untuk tumbuh.','#ecosystem .section-title':'Portofolio yang dibangun dari peluang.','#agency h3':'HMH Agency<br>mendorong brand maju.','#values .section-title':'Cara kami memilih untuk membangun.','#story .section-title':'Dari awal digital menuju ekosistem yang lebih luas.','#people .section-title':'Dipimpin founder. Berorientasi masa depan.','#insights .section-title':'Ide di balik setiap langkah.','#contact .section-title':'Mari membangun apa yang berikutnya.',
+      '#about .about-main p':'<strong>HMH Group</strong> membawa cara berpikir holding ke dunia bisnis yang semakin digital: membangun unit yang fokus, berbagi kapabilitas, dan membuka ruang untuk kolaborasi antar-ekosistem.',
+      '#about blockquote':'Kami menciptakan sinergi, mendorong inovasi, dan membantu bisnis ambisius bergerak maju.'
+    },
+    en:{
+      '#about .section-title':'One group.<br>Multiple ways to grow.','#ecosystem .section-title':'A portfolio built around opportunity.','#agency h3':'HMH Agency<br>moves brands forward.','#values .section-title':'How we choose to build.','#story .section-title':'From a digital beginning to a broader ecosystem.','#people .section-title':'Founder-led. Future-focused.','#insights .section-title':'Ideas behind the work.','#contact .section-title':'Let’s build what comes next.',
+      '#about .about-main p':'<strong>HMH Group</strong> brings a holding-company mindset to an increasingly digital business world: focused units, shared capabilities, and room for cross-ecosystem collaboration.',
+      '#about blockquote':'We create synergy, foster innovation, and help ambitious businesses move forward.'
+    }
+  };
+  function applyStaticLanguage(lang){Object.entries(staticText[lang]).forEach(([sel,val])=>{const el=document.querySelector(sel);if(el)renderI18nValue(el,val);});}
+  const extraI18n={
+    id:{
+      '#agency .feature-copy>p':'HMH Agency adalah digital agency dalam ekosistem HMH yang menggabungkan strategy, creative, design, technology, dan content untuk membantu bisnis membangun presence digital yang relevan.',
+      '#values .values-note h4':'Build with ambition.<br>Operate with discipline.',
+      '#values .values-note p':'Setiap unit bebas bergerak sesuai pasarnya, namun tetap terhubung oleh prinsip, governance, dan tujuan pertumbuhan yang sama.',
+      '#story .timeline .t-item:nth-child(1) h4':'HMH Group mulai terbentuk.','#story .timeline .t-item:nth-child(2) h4':'Digital menjadi mesin operasional.','#story .timeline .t-item:nth-child(3) h4':'Capital dan ventures memperluas peta.',
+      '#story .timeline .t-item:nth-child(1) p':'HMH Group mulai dibangun sebagai holding company dengan visi menghubungkan agency, digital capabilities, dan investment thinking.','#story .timeline .t-item:nth-child(2) p':'HMH Agency menjadi pintu masuk ke ecosystem: website, digital marketing, design, content, dan growth services.','#story .timeline .t-item:nth-child(3) p':'Ekosistem diarahkan untuk terus berkembang melalui investment perspective, new ventures, partnerships, dan produk digital.',
+      '#story .story-card h3':'Small enough to move.<br>Ambitious enough to matter.','#story .story-card p':'HMH dirancang untuk tetap gesit sebagai perusahaan bertumbuh, namun berpikir layaknya group yang ingin membangun nilai lintas generasi bisnis.',
+      '#insights .insight:nth-child(1) h4':'Why an ecosystem beats isolated capabilities.','#insights .insight:nth-child(2) h4':'Building a brand that earns attention.','#insights .insight:nth-child(3) h4':'From idea to business: the HMH lens.',
+      '#insights .insight:nth-child(1) p':'Bagaimana digital, capital, dan operations bisa saling menguatkan.','#insights .insight:nth-child(2) p':'Brand modern membutuhkan consistency, speed, dan experience yang menyatu.','#insights .insight:nth-child(3) p':'Kerangka sederhana untuk melihat peluang, validasi, dan execution.'
+    },
+    en:{
+      '#agency .feature-copy>p':'HMH Agency is the digital agency within the HMH ecosystem, combining strategy, creative, design, technology, and content to help businesses build a relevant digital presence.',
+      '#values .values-note h4':'Build with ambition.<br>Operate with discipline.',
+      '#values .values-note p':'Each unit is free to move with its market while remaining connected by shared principles, governance, and growth objectives.',
+      '#story .timeline .t-item:nth-child(1) h4':'HMH Group takes shape.','#story .timeline .t-item:nth-child(2) h4':'Digital becomes the operating engine.','#story .timeline .t-item:nth-child(3) h4':'Capital and ventures expand the map.',
+      '#story .timeline .t-item:nth-child(1) p':'HMH Group began as a holding-company vision connecting agency, digital capabilities, and investment thinking.','#story .timeline .t-item:nth-child(2) p':'HMH Agency became the entry point to the ecosystem: websites, digital marketing, design, content, and growth services.','#story .timeline .t-item:nth-child(3) p':'The ecosystem is designed to expand through an investment perspective, new ventures, partnerships, and digital products.',
+      '#story .story-card h3':'Small enough to move.<br>Ambitious enough to matter.','#story .story-card p':'HMH is designed to stay agile as a growing company while thinking like a group that wants to build value across generations of businesses.',
+      '#insights .insight:nth-child(1) h4':'Why an ecosystem beats isolated capabilities.','#insights .insight:nth-child(2) h4':'Building a brand that earns attention.','#insights .insight:nth-child(3) h4':'From idea to business: the HMH lens.',
+      '#insights .insight:nth-child(1) p':'How digital, capital, and operations can reinforce one another.','#insights .insight:nth-child(2) p':'Modern brands need consistency, speed, and a connected experience.','#insights .insight:nth-child(3) p':'A simple lens for opportunity, validation, and execution.'
+    }
+  };
+  const applyExtraLanguage=(lang)=>Object.entries(extraI18n[lang]).forEach(([sel,val])=>{const el=document.querySelector(sel);if(el)el.innerHTML=val;});
+  applyLanguage(savedLang,false);
+
+  function closeMenu(){menu.classList.remove('open');menuToggle.classList.remove('is-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label',document.documentElement.lang==='id'?'Buka menu':'Open menu');}
+  function toggleMenu(){const open=!menu.classList.contains('open');menu.classList.toggle('open',open);menuToggle.classList.toggle('is-open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?(document.documentElement.lang==='id'?'Tutup menu':'Close menu'):(document.documentElement.lang==='id'?'Buka menu':'Open menu'));}
+  menuToggle.addEventListener('click',toggleMenu);
+
+  document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',closeMenu));
+  window.addEventListener('resize',()=>{if(window.innerWidth>760)closeMenu();});
+
+  function onScroll(){
+    header.classList.toggle('scrolled',window.scrollY>10);
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    progress.style.transform='scaleX('+(max>0?window.scrollY/max:0)+')';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const filterButtons=[...document.querySelectorAll('.filter-btn')];
+  const cards=[...document.querySelectorAll('.eco-card')];
+  filterButtons.forEach(btn=>btn.addEventListener('click',()=>{
+    filterButtons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+    const f=btn.dataset.filter;
+    cards.forEach(card=>{card.style.display=(f==='all'||card.dataset.cat===f)?'flex':'none';});
+  }));
+
+  const modal=document.getElementById('modal');
+  const modalTitle=document.getElementById('modalTitle');
+  const modalBody=document.getElementById('modalBody');
+  const modalClose=document.getElementById('modalClose');
+  const copyEmail=document.getElementById('copyEmail');
+  const modalData={
+    agency:{title:'HMH Agency',body:'<p><strong>HMH Agency</strong> adalah flagship digital/creative business dalam ekosistem HMH.</p><p>Fokus kapabilitas: digital marketing, web development, design & branding, content creation, SEO, serta digital growth.</p><p>Untuk project dan partnership: <a style="color:#c7a46a" href="mailto:hmhgroup.id@gmail.com">hmhgroup.id@gmail.com</a></p>'}
+  };
+  document.querySelectorAll('[data-modal]').forEach(btn=>btn.addEventListener('click',()=>{const d=modalData[btn.dataset.modal];modalTitle.textContent=d.title;modalBody.innerHTML=d.body;modal.classList.add('open');document.body.style.overflow='hidden'}));
+  function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
+  modalClose.addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+  copyEmail.addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText('hmhgroup.id@gmail.com');showToast('Email copied.')}catch(e){showToast('hmhgroup.id@gmail.com')}
+  });
+  function showToast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
+})();
+</script>
+</body>
+</html>
