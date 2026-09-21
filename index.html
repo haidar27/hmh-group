@@ -881,157 +881,42 @@ html[data-theme="light"] .menu a{color:#111f32;border-bottom-color:rgba(16,16,16
 }
 
 
-/* === Hero text + rotating HMH spacing refinement === */
-.hero > .container > .hero-wrap{
-  transform:translateY(76px);
-}
-.hero-image-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.15) 30%,rgba(0,0,0,.03) 66%,rgba(0,0,0,0) 100%),
-    linear-gradient(180deg,rgba(0,0,0,.02) 28%,rgba(0,0,0,.08) 42%,rgba(0,0,0,.20) 68%,rgba(0,0,0,.34) 100%);
-  z-index:0;
-}
-.hero > .container > .hero-wrap > .reveal:first-child{
-  text-shadow:0 2px 18px rgba(0,0,0,.20);
-}
-.hero > .container > .hero-wrap > .hero-side{
-  text-shadow:0 2px 16px rgba(0,0,0,.18);
-}
-.hero-art-separate{
-  position:relative;
-  z-index:1;
-  isolation:isolate;
-  padding-top:38px;
-  padding-bottom:0;
-}
-.hero-art-separate::before{
-  content:"";
-  display:block;
-  width:min(160px,28vw);
-  height:1px;
-  margin:0 auto 22px;
-  background:linear-gradient(90deg,transparent,rgba(16,16,16,.28),transparent);
-}
-.hero-art-separate > .hero-art{
-  margin-top:0;
-}
-@media(max-width:760px){
-  .hero > .container > .hero-wrap{
-    transform:translateY(52px);
-  }
-  .hero-art-separate{
-    padding-top:28px;
-  }
-  .hero-art-separate::before{
-    width:100px;
-    margin-bottom:18px;
-  }
-  .hero-art-separate > .hero-art{
-    margin-top:0;
-  }
-}
-
-/* === Hero bridge between image and rotating HMH === */
-.hero-bridge{
-  width:min(calc(100% - 40px),var(--max));
-  margin:0 auto;
-  min-height:94px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:18px;
-  position:relative;
-  z-index:2;
-  padding:10px 0 4px;
-}
-.hero-bridge-line{
-  flex:1 1 180px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(16,16,16,.12),transparent);
-}
-.hero-bridge-content{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:#77776f;
-  font-size:9px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
-.hero-bridge-content i{
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 4px rgba(255,204,0,.10);
-}
-.hero-bridge-content b{
-  color:#111f32;
-  font-weight:700;
-}
-html[data-theme="dark"] .hero-bridge-line{
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
-}
-html[data-theme="dark"] .hero-bridge-content{color:#8f9aa5}
-html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
-@media(max-width:760px){
-  .hero-bridge{
-    width:calc(100% - 28px);
-    min-height:78px;
-    gap:10px;
-    padding:8px 0 2px;
-  }
-  .hero-bridge-content{
-    gap:8px;
-    font-size:7px;
-    letter-spacing:.16em;
-  }
-  .hero-bridge-line{flex-basis:55px}
-}
-
-
 /* =========================================================
-   HMH HERO BACKGROUND — REFINED / RESPONSIVE
+   HMH HERO — CLEAN CORPORATE / TATA-INSPIRED DIRECTION
    ========================================================= */
 .hero{
   position:relative;
-  min-height:clamp(620px, calc(100svh - 82px), 820px);
-  padding:96px 0 72px;
+  min-height:clamp(640px, calc(100svh - 82px), 820px);
+  padding:clamp(58px,7vw,96px) 0 clamp(44px,6vw,72px);
   overflow:hidden;
   isolation:isolate;
 }
 
 .hero-image-box{
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
   z-index:0;
+  top:0;
+  right:0;
+  width:min(52vw,820px);
+  height:100%;
   overflow:hidden;
   pointer-events:none;
-  background:
-    radial-gradient(circle at 14% 24%, rgba(255,204,0,.14), transparent 27%),
-    linear-gradient(135deg,#f8f8f5 0%,#f2f2ed 52%,#e8e8e2 100%);
+  background:linear-gradient(135deg,#f7f7f3 0%,#ecece7 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.20) 14%,#000 38%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.20) 14%,#000 38%,#000 100%);
 }
 
 .hero-image-box img{
   position:absolute;
-  inset:-2%;
-  width:104%;
-  height:104%;
+  inset:0;
+  width:100%;
+  height:100%;
   max-width:none;
   display:block;
   object-fit:cover;
   object-position:center center;
-  opacity:.38;
-  mix-blend-mode:multiply;
-  transform:scale(1.01);
-  transform-origin:center;
+  opacity:.78;
+  transform:none;
 }
 
 .hero-image-box::before{
@@ -1041,29 +926,19 @@ html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
   z-index:1;
   pointer-events:none;
   background:
-    linear-gradient(90deg,
-      rgba(255,255,255,.96) 0%,
-      rgba(255,255,255,.90) 30%,
-      rgba(255,255,255,.62) 52%,
-      rgba(255,255,255,.20) 76%,
-      rgba(255,255,255,.05) 100%),
-    linear-gradient(180deg,
-      rgba(255,255,255,.04) 0%,
-      rgba(255,255,255,.05) 42%,
-      rgba(247,247,243,.46) 78%,
-      rgba(247,247,243,.88) 100%);
+    linear-gradient(90deg,rgba(247,247,243,.96) 0%,rgba(247,247,243,.72) 18%,rgba(247,247,243,.14) 46%,rgba(247,247,243,0) 78%),
+    linear-gradient(180deg,rgba(247,247,243,.02) 50%,rgba(247,247,243,.86) 100%);
 }
 
 .hero-image-box::after{
   content:"";
   position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:34%;
   z-index:2;
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(247,247,243,.90));
+  right:6%;
+  top:12%;
+  width:22%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(17,31,50,.34));
 }
 
 .hero > .container{
@@ -1075,220 +950,204 @@ html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
   transform:none;
   min-width:0;
   display:grid;
-  grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr);
+  grid-template-columns:minmax(0,1.04fr) minmax(300px,.62fr);
   align-items:end;
-  gap:54px;
+  gap:clamp(36px,5vw,76px);
 }
 
-.hero > .container > .hero-wrap > *{
-  min-width:0;
+.hero > .container > .hero-wrap > *{min-width:0}
+
+.hero-title{
+  max-width:780px;
+  margin-top:18px;
+  color:#111f32;
+  font-size:clamp(56px,7.2vw,112px);
+  line-height:.9;
+  letter-spacing:-.072em;
+  font-weight:850;
+  text-wrap:balance;
 }
 
-.hero .reveal:first-child{
-  text-shadow:none;
-}
-
-.hero .hero-side{
-  text-shadow:none;
-  max-width:470px;
-  justify-self:end;
+.hero-title em{
+  font-style:normal;
+  color:#111f32;
 }
 
 .hero .hero-copy{
   max-width:610px;
-  text-wrap:balance;
+  margin-top:28px;
+  color:#555650;
+  font-size:clamp(16px,1.35vw,19px);
+  line-height:1.6;
+  text-wrap:pretty;
 }
 
-.hero .hero-cta{
-  position:relative;
-  z-index:5;
+.hero .hero-cta{margin-top:30px;position:relative;z-index:5}
+.hero .scroll-note{margin-top:48px}
+
+.hero .hero-side{
+  width:100%;
+  max-width:450px;
+  justify-self:end;
+  align-self:end;
+  padding:30px 0 2px 34px;
+  border-left:1px solid rgba(16,16,16,.14);
+  background:linear-gradient(90deg,rgba(255,255,255,.70),rgba(255,255,255,.18));
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+
+.hero .statement{
+  max-width:390px;
+  margin-bottom:28px;
+  color:#5f605a;
+  font-size:13px;
+  line-height:1.65;
 }
 
 .hero .hero-card{
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  background:rgba(255,255,255,.48);
-  border-top-color:rgba(16,16,16,.14);
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:20px;
+  padding:17px 0 0;
+  background:transparent;
+  border-top:1px solid rgba(16,16,16,.13);
 }
 
-.hero .hero-card b,
-.hero .hero-card div:last-child{
-  color:#111f32;
-}
+.hero .hero-card + .hero-card{margin-top:14px}
+.hero .hero-card b{color:#111f32}
+.hero .hero-card span{display:block;color:#77786f;margin-top:3px}
 
 .hero-art-separate{
   position:relative;
   z-index:2;
+  padding-top:30px;
 }
 
-/* Dark theme adaptation: keep the same SVG but make it atmospheric. */
+.hero-art-separate::before{
+  content:"";
+  display:block;
+  width:min(150px,26vw);
+  height:1px;
+  margin:0 auto 22px;
+  background:linear-gradient(90deg,transparent,rgba(16,16,16,.22),transparent);
+}
+
+.hero-art-separate > .hero-art{margin-top:0}
+
+/* Dark mode — same composition, deeper contrast. */
 html[data-theme="dark"] .hero-image-box{
-  background:
-    radial-gradient(circle at 18% 20%,rgba(255,204,0,.10),transparent 28%),
-    linear-gradient(135deg,#0d1726 0%,#111c2c 58%,#172536 100%);
+  background:linear-gradient(135deg,#101923 0%,#172534 100%);
 }
-
-html[data-theme="dark"] .hero-image-box img{
-  opacity:.18;
-  mix-blend-mode:screen;
-}
-
+html[data-theme="dark"] .hero-image-box img{opacity:.35;mix-blend-mode:screen}
 html[data-theme="dark"] .hero-image-box::before{
   background:
-    linear-gradient(90deg,
-      rgba(7,12,20,.72) 0%,
-      rgba(7,12,20,.52) 34%,
-      rgba(7,12,20,.26) 68%,
-      rgba(7,12,20,.08) 100%),
-    linear-gradient(180deg,
-      rgba(7,12,20,.12) 0%,
-      rgba(7,12,20,.18) 48%,
-      rgba(7,12,20,.56) 100%);
+    linear-gradient(90deg,rgba(11,18,32,.98) 0%,rgba(11,18,32,.82) 20%,rgba(11,18,32,.18) 54%,rgba(11,18,32,0) 82%),
+    linear-gradient(180deg,rgba(11,18,32,.02) 50%,rgba(11,18,32,.88) 100%);
+}
+html[data-theme="dark"] .hero-title,
+html[data-theme="dark"] .hero-title em{color:#f4f4ef}
+html[data-theme="dark"] .hero .hero-copy{color:#b7bbb8}
+html[data-theme="dark"] .hero .hero-side{
+  border-left-color:rgba(255,255,255,.16);
+  background:linear-gradient(90deg,rgba(15,24,38,.72),rgba(15,24,38,.16));
+}
+html[data-theme="dark"] .hero .statement{color:#a8afb2}
+html[data-theme="dark"] .hero .hero-card{border-top-color:rgba(255,255,255,.14)}
+html[data-theme="dark"] .hero .hero-card b{color:#f1f2ef}
+html[data-theme="dark"] .hero .hero-card span{color:#969ea3}
+html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+
+@media (max-width:1100px){
+  .hero-image-box{width:48vw}
+  .hero > .container > .hero-wrap{
+    grid-template-columns:minmax(0,1fr) minmax(270px,.56fr);
+    gap:36px;
+  }
+  .hero .hero-side{padding-left:26px}
+  .hero-title{font-size:clamp(52px,7.4vw,88px)}
 }
 
-html[data-theme="dark"] .hero-image-box::after{
-  background:linear-gradient(180deg,transparent,rgba(11,18,30,.92));
-}
-
-html[data-theme="dark"] .hero .hero-card{
-  background:rgba(15,24,38,.52);
-  border-top-color:rgba(255,255,255,.13);
-}
-
-html[data-theme="dark"] .hero .hero-card b,
-html[data-theme="dark"] .hero .hero-card div:last-child{
-  color:#f4f5f2;
-}
-
-/* Small laptops / tablets */
-@media (max-width:1020px){
+@media (max-width:860px){
   .hero{
-    min-height:clamp(650px, calc(100svh - 74px), 850px);
-    padding-top:82px;
+    min-height:auto;
+    padding:64px 0 48px;
+  }
+  .hero-image-box{
+    width:100%;
+    height:54%;
+    top:auto;
+    bottom:0;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.10) 16%,#000 48%,#000 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.10) 16%,#000 48%,#000 100%);
+  }
+  .hero-image-box::before{
+    background:linear-gradient(180deg,rgba(247,247,243,0) 0%,rgba(247,247,243,.62) 52%,rgba(247,247,243,.94) 100%);
+  }
+  html[data-theme="dark"] .hero-image-box::before{
+    background:linear-gradient(180deg,rgba(11,18,32,0) 0%,rgba(11,18,32,.60) 52%,rgba(11,18,32,.95) 100%);
   }
   .hero > .container > .hero-wrap{
     grid-template-columns:1fr;
-    gap:40px;
-    align-items:start;
-  }
-  .hero .hero-side{
-    justify-self:start;
-    max-width:620px;
-  }
-  .hero-image-box img{
-    object-position:58% center;
-  }
-  .hero-image-box::before{
-    background:
-      linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.79) 48%,rgba(255,255,255,.30) 100%),
-      linear-gradient(180deg,rgba(255,255,255,.04),rgba(247,247,243,.80));
-  }
-  html[data-theme="dark"] .hero-image-box::before{
-    background:
-      linear-gradient(90deg,rgba(7,12,20,.78) 0%,rgba(7,12,20,.48) 52%,rgba(7,12,20,.15) 100%),
-      linear-gradient(180deg,rgba(7,12,20,.10),rgba(7,12,20,.72));
-  }
-}
-
-/* Phones — no fixed offsets, no background collision, no horizontal overflow. */
-@media (max-width:760px){
-  .hero{
-    min-height:auto;
-    padding:58px 0 48px;
-    overflow:hidden;
-  }
-  .hero-image-box{
-    min-height:100%;
-  }
-  .hero-image-box img{
-    inset:-4%;
-    width:108%;
-    height:108%;
-    object-position:67% center;
-    opacity:.24;
-  }
-  .hero-image-box::before{
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.78) 40%,rgba(255,255,255,.66) 66%,rgba(247,247,243,.92) 100%);
-  }
-  .hero-image-box::after{
-    height:44%;
-    background:linear-gradient(180deg,transparent,rgba(247,247,243,.96));
-  }
-  .hero > .container > .hero-wrap{
-    transform:none;
-    grid-template-columns:minmax(0,1fr);
     gap:34px;
   }
   .hero .hero-side{
-    width:100%;
-    max-width:none;
-    justify-self:stretch;
+    max-width:640px;
+    justify-self:start;
+    padding:26px 0 0;
+    border-left:0;
+    border-top:1px solid rgba(16,16,16,.14);
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  html[data-theme="dark"] .hero .hero-side{border-top-color:rgba(255,255,255,.15)}
+  .hero .statement{max-width:620px}
+}
+
+@media (max-width:760px){
+  .hero{padding:48px 0 34px}
+  .hero-image-box{
+    height:46%;
+    opacity:.82;
+  }
+  .hero-title{
+    margin-top:16px;
+    max-width:100%;
+    font-size:clamp(48px,15.4vw,76px);
+    line-height:.92;
+    letter-spacing:-.064em;
   }
   .hero .hero-copy{
+    max-width:100%;
     margin-top:22px;
     font-size:15px;
-    max-width:100%;
+    line-height:1.58;
   }
   .hero .hero-cta{
-    gap:10px;
     width:100%;
+    gap:9px;
   }
   .hero .hero-cta .pill{
-    justify-content:center;
     width:100%;
+    justify-content:center;
   }
-  .hero .scroll-note{
-    margin-top:34px;
+  .hero .hero-side{
+    padding-top:22px;
   }
-  .hero .hero-card{
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:12px;
-    padding-top:14px;
-  }
-  .hero .hero-card span{
-    display:block;
-    max-width:100%;
-  }
-  .hero-art-separate{
-    padding-top:20px;
-  }
-  html[data-theme="dark"] .hero-image-box img{
-    opacity:.14;
-  }
-  html[data-theme="dark"] .hero-image-box::before{
-    background:
-      linear-gradient(180deg,rgba(7,12,20,.70) 0%,rgba(7,12,20,.56) 44%,rgba(7,12,20,.64) 72%,rgba(7,12,20,.94) 100%);
-  }
-  html[data-theme="dark"] .hero-image-box::after{
-    height:42%;
-    background:linear-gradient(180deg,transparent,rgba(11,18,30,.96));
-  }
+  .hero .statement{font-size:12.5px;line-height:1.62}
+  .hero .hero-card{padding-top:13px;gap:14px}
+  .hero .hero-card b{font-size:13px}
+  .hero .hero-card span{font-size:11px}
+  .hero .scroll-note{margin-top:32px}
+  .hero-art-separate{padding-top:20px}
 }
 
 @media (max-width:480px){
-  .hero{
-    padding-top:46px;
-    padding-bottom:38px;
-  }
-  .hero .eyebrow{
-    font-size:10px;
-    letter-spacing:.12em;
-  }
-  .hero .hero-copy{
-    font-size:14px;
-    line-height:1.6;
-  }
-  .hero .hero-card{
-    padding-top:13px;
-  }
-  .hero .hero-card b{
-    font-size:13px;
-  }
-  .hero .hero-card span,
-  .hero .hero-card div:last-child{
-    font-size:11px;
-  }
+  .hero{padding-top:42px}
+  .hero-image-box{height:40%}
+  .hero-title{font-size:clamp(44px,14.6vw,64px)}
+  .hero .eyebrow{font-size:10px;letter-spacing:.12em}
+  .hero .hero-card div:last-child{font-size:11px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -1317,11 +1176,12 @@ html[data-theme="dark"] .hero .hero-card div:last-child{
 
 <main id="home">
 <section class="hero">
-  <div class="hero-image-box" aria-hidden="true"><img src="img/bg.jpg" alt="" /></div>
+  <div class="hero-image-box" aria-hidden="true"><img src="img/bg.svg" alt="" /></div>
   <div class="container">
     <div class="hero-wrap">
       <div class="reveal">
         <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Independent business ecosystem · Indonesia</span></div>
+        <h1 class="hero-title" data-i18n="hero.title">Build boldly.<br><em>Think beyond.</em></h1>
         <p class="hero-copy" data-i18n="hero.copy">HMH Group adalah ekosistem bisnis yang menghubungkan creative & digital services, technology, capital, dan venture untuk menciptakan pertumbuhan jangka panjang.</p>
         <div class="hero-cta"><a href="#ecosystem" class="pill primary" data-i18n="hero.cta1">Explore HMH ecosystem →</a><a href="#about" class="pill" data-i18n="hero.cta2">Discover the group</a></div>
         <div class="scroll-note"><span class="scroll-line"></span><span data-i18n="hero.scroll">Scroll to explore</span></div>
@@ -1490,7 +1350,7 @@ html[data-theme="dark"] .hero .hero-card div:last-child{
   const translations={
     id:{
       'nav.about':'Tentang','nav.ecosystem':'Ekosistem','nav.agency':'HMH Agency','nav.values':'Nilai','nav.story':'Cerita Kami','nav.contact':'Kontak',
-      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
+      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.title':'Bangun dengan berani.<br><em>Berpikir melampaui.</em>','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
       'about.intro':'HMH Group dibangun sebagai holding company yang mengembangkan dan menghubungkan bisnis, kapabilitas, dan peluang lintas sektor.','about.established':'Didirikan','about.market':'Pasar utama','about.spectrum':'Spektrum pertumbuhan','about.value':'Penciptaan nilai',
       'ecosystem.intro':'Seperti arsitektur sebuah grup modern, tiap vertical memiliki fokus sendiri namun dirancang untuk saling menguatkan.','ecosystem.portfolio':'Peta portofolio',
       'filter.all':'Semua','filter.digital':'Digital & Kreatif','filter.capital':'Modal','filter.venture':'Venture',
@@ -1502,7 +1362,7 @@ html[data-theme="dark"] .hero .hero-card div:last-child{
     },
     en:{
       'nav.about':'About','nav.ecosystem':'Ecosystem','nav.agency':'HMH Agency','nav.values':'Values','nav.story':'Our Story','nav.contact':'Contact',
-      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
+      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.title':'Build boldly.<br><em>Think beyond.</em>','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
       'about.intro':'HMH Group is built as a holding company that develops and connects businesses, capabilities, and opportunities across sectors.','about.established':'Group established','about.market':'Home market','about.spectrum':'Growth spectrum','about.value':'Value creation',
       'ecosystem.intro':'Like the architecture of a modern group, each vertical has its own focus while being designed to strengthen the others.','ecosystem.portfolio':'Portfolio map',
       'filter.all':'All','filter.digital':'Digital & Creative','filter.capital':'Capital','filter.venture':'Venture',
