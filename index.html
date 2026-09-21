@@ -1155,16 +1155,14 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
 }
 
 
+
 /* =========================================================
-   HERO BACKGROUND IMAGE — FINAL OVERRIDE
-   img/bg.jpg fills the entire hero; no spinning artwork.
+   HERO — bg.jpg FULL BLEED + HMH ROTATING ART KEPT SEPARATE
    ========================================================= */
 .hero{
   position:relative;
-  min-height:calc(100svh - 82px);
-  padding:0;
-  display:flex;
-  align-items:center;
+  min-height:clamp(620px,calc(100svh - 82px),900px);
+  padding:clamp(68px,8vw,108px) 0 clamp(50px,6vw,78px);
   overflow:hidden;
   isolation:isolate;
   background:#111;
@@ -1179,8 +1177,8 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
   overflow:hidden;
   pointer-events:none;
   background:#111;
-  -webkit-mask-image:none;
-  mask-image:none;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
 }
 
 .hero-image-box img{
@@ -1197,6 +1195,7 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
   mix-blend-mode:normal;
 }
 
+/* One soft overlay only — no hard panel or mid-page divider. */
 .hero-image-box::before{
   content:"";
   position:absolute;
@@ -1204,19 +1203,15 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
   z-index:1;
   pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.64) 32%,rgba(0,0,0,.28) 67%,rgba(0,0,0,.12) 100%),
-    linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.48) 100%);
+    linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.40) 34%,rgba(0,0,0,.15) 68%,rgba(0,0,0,.05) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.04) 56%,rgba(0,0,0,.20) 100%);
 }
 
-.hero-image-box::after{
-  display:none;
-}
+.hero-image-box::after{display:none !important}
 
 .hero > .container{
   position:relative;
   z-index:3;
-  width:min(calc(100% - 40px),var(--max));
-  padding:clamp(54px,7vw,92px) 0;
 }
 
 .hero > .container > .hero-wrap{
@@ -1224,250 +1219,134 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
   z-index:4;
   display:grid;
   grid-template-columns:minmax(0,1.1fr) minmax(280px,.72fr);
-  align-items:center;
-  gap:clamp(38px,6vw,84px);
-  transform:none;
-  min-width:0;
+  gap:clamp(34px,5vw,68px);
+  align-items:end;
 }
 
-.hero > .container > .hero-wrap > *{
-  min-width:0;
-}
+.hero > .container > .hero-wrap > *{min-width:0}
 
-.hero .eyebrow{
-  color:rgba(255,255,255,.88);
-  text-shadow:0 2px 18px rgba(0,0,0,.35);
-}
+/* Keep hero text readable regardless of the image underneath. */
+.hero .eyebrow{color:rgba(255,255,255,.82)}
+.hero .hero-copy{color:rgba(255,255,255,.90)}
+.hero .hero-side{color:#fff}
+.hero .statement{color:rgba(255,255,255,.80)}
+.hero .hero-card{border-top-color:rgba(255,255,255,.28);background:transparent}
+.hero .hero-card b{color:#fff}
+.hero .hero-card span{color:rgba(255,255,255,.68)}
+.hero .hero-card > div:last-child{color:rgba(255,255,255,.76)}
+.hero .scroll-note{color:rgba(255,255,255,.74)}
+.hero .scroll-line{background:rgba(255,255,255,.38)}
+.hero .hero-title{color:#fff}
+.hero .hero-title em{color:var(--accent)}
 
-.hero .dot{
-  background:var(--brand-yellow);
-  box-shadow:0 0 15px rgba(255,204,0,.65);
-}
-
-.hero .hero-copy{
-  max-width:720px;
-  margin-top:22px;
-  color:rgba(255,255,255,.93);
-  font-size:clamp(17px,1.5vw,21px);
-  line-height:1.65;
-  text-shadow:0 2px 18px rgba(0,0,0,.42);
-}
-
-.hero .hero-cta{
-  margin-top:30px;
-  position:relative;
-  z-index:5;
-}
-
-.hero .hero-cta .pill{
-  background:rgba(0,0,0,.42);
-  color:#fff;
-  border-color:rgba(255,255,255,.34);
-  box-shadow:0 10px 28px rgba(0,0,0,.18);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-}
-
-.hero .hero-cta .pill:hover{
-  border-color:rgba(255,255,255,.68);
-  background:rgba(0,0,0,.52);
-}
-
-.hero .hero-cta .pill.primary{
-  background:var(--brand-yellow);
-  color:#111f32;
-  border-color:var(--brand-yellow);
-  box-shadow:0 12px 32px rgba(0,0,0,.22),0 0 24px rgba(255,204,0,.2);
-}
-
-.hero .scroll-note{
-  margin-top:42px;
-  color:rgba(255,255,255,.76);
-  text-shadow:0 2px 16px rgba(0,0,0,.35);
-}
-
-.hero .scroll-line{
-  background:rgba(255,255,255,.42);
-}
-
+/* Do not create a translucent rectangular 'panel' over the image. */
 .hero .hero-side{
-  width:100%;
-  max-width:470px;
+  max-width:450px;
   justify-self:end;
-  align-self:center;
   padding:28px 0 2px 30px;
-  border-left:1px solid rgba(255,255,255,.28);
-  background:linear-gradient(90deg,rgba(0,0,0,.32),rgba(0,0,0,.08));
-  backdrop-filter:blur(7px);
-  -webkit-backdrop-filter:blur(7px);
-  border-radius:0 18px 18px 0;
-  box-shadow:inset 18px 0 40px rgba(0,0,0,.08);
+  border-left:1px solid rgba(255,255,255,.20);
+  background:transparent !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
 }
 
-.hero .statement{
-  max-width:410px;
-  margin-bottom:28px;
-  color:rgba(255,255,255,.86);
-  font-size:13px;
-  line-height:1.7;
-  text-shadow:0 2px 16px rgba(0,0,0,.35);
+/* The rotating HMH artwork stays below the hero image, where it cannot cover it. */
+.hero-art-separate{
+  position:relative;
+  z-index:2;
+  padding-top:30px;
+  display:block !important;
+  visibility:visible !important;
 }
 
-.hero .hero-card{
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:20px;
-  padding:15px 18px 0 0;
-  background:transparent;
-  border-top:1px solid rgba(255,255,255,.20);
-}
-
-.hero .hero-card + .hero-card{
-  margin-top:14px;
-}
-
-.hero .hero-card b{
-  color:#fff;
-  text-shadow:0 2px 14px rgba(0,0,0,.35);
-}
-
-.hero .hero-card span{
-  display:block;
-  color:rgba(255,255,255,.68);
-  margin-top:3px;
-}
-
-.hero .hero-card > div:last-child{
-  color:rgba(255,255,255,.74);
-}
-
-.hero-art,
-.hero-art-separate,
-.hero-bridge{
-  display:none !important;
+.hero-art-separate::before{display:block}
+.hero-art-separate > .hero-art{
+  display:block !important;
+  visibility:visible !important;
+  margin-top:0;
 }
 
 @media (max-width:1100px){
   .hero > .container > .hero-wrap{
-    grid-template-columns:minmax(0,1fr) minmax(270px,.65fr);
-    gap:38px;
+    grid-template-columns:minmax(0,1fr) minmax(260px,.62fr);
+    gap:32px;
   }
 }
 
 @media (max-width:860px){
   .hero{
     min-height:calc(100svh - 82px);
+    padding:60px 0 52px;
   }
 
-  .hero > .container{
-    padding:58px 0 54px;
+  .hero-image-box{
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+  }
+
+  .hero-image-box::before{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.36) 100%),
+      linear-gradient(90deg,rgba(0,0,0,.52) 0%,rgba(0,0,0,.20) 80%,rgba(0,0,0,.08) 100%);
   }
 
   .hero > .container > .hero-wrap{
     grid-template-columns:1fr;
-    gap:34px;
+    gap:32px;
   }
 
   .hero .hero-side{
-    max-width:700px;
+    max-width:640px;
     justify-self:start;
-    align-self:auto;
     padding:24px 0 0;
     border-left:0;
-    border-top:1px solid rgba(255,255,255,.24);
-    border-radius:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.08));
-    box-shadow:none;
-  }
-
-  .hero .statement{
-    max-width:650px;
+    border-top:1px solid rgba(255,255,255,.22);
   }
 }
 
 @media (max-width:760px){
   .hero{
     min-height:calc(100svh - 72px);
+    padding:50px 0 38px;
+  }
+
+  .hero-image-box{
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    opacity:1 !important;
   }
 
   .hero-image-box img{
     object-position:center center;
   }
 
-  .hero-image-box::before{
-    background:
-      linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.58) 48%,rgba(0,0,0,.28) 100%),
-      linear-gradient(180deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.16) 45%,rgba(0,0,0,.55) 100%);
-  }
-
-  .hero > .container{
-    width:min(calc(100% - 28px),var(--max));
-    padding:46px 0 40px;
-  }
-
-  .hero > .container > .hero-wrap{
-    gap:28px;
-  }
-
   .hero .hero-copy{
-    margin-top:20px;
-    font-size:15.5px;
-    line-height:1.62;
+    font-size:15px;
+    line-height:1.6;
   }
 
-  .hero .hero-cta{
-    width:100%;
-    gap:9px;
-  }
-
-  .hero .hero-cta .pill{
-    width:100%;
-    justify-content:center;
-  }
-
-  .hero .hero-side{
-    padding-top:21px;
-  }
-
-  .hero .statement{
-    font-size:12.5px;
-    line-height:1.65;
-  }
-
-  .hero .hero-card{
-    padding-top:13px;
-    gap:14px;
-  }
-
-  .hero .hero-card b{
-    font-size:13px;
-  }
-
-  .hero .hero-card span{
-    font-size:11px;
-  }
-
-  .hero .scroll-note{
-    margin-top:30px;
-  }
+  .hero .hero-cta{width:100%;gap:9px}
+  .hero .hero-cta .pill{width:100%;justify-content:center}
+  .hero .hero-side{padding-top:20px}
+  .hero-art-separate{padding-top:22px}
 }
 
 @media (max-width:480px){
-  .hero > .container{
-    padding-top:38px;
-    padding-bottom:34px;
+  .hero{
+    min-height:calc(100svh - 72px);
+    padding:42px 0 32px;
   }
 
-  .hero .eyebrow{
-    font-size:10px;
-    letter-spacing:.12em;
+  .hero-image-box{
+    height:100% !important;
   }
 
-  .hero .hero-copy{
-    font-size:15px;
-  }
-
-  .hero .hero-card > div:last-child{
-    font-size:11px;
+  .hero-image-box img{
+    object-position:center center;
   }
 }
 
@@ -1510,6 +1389,20 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
       </div>
     </div>
 </section>
+
+<div class="hero-bridge" aria-hidden="true">
+  <div class="hero-bridge-line"></div>
+  <div class="hero-bridge-content">
+    <span>HMH GROUP</span>
+    <i></i>
+    <b>BUILD · CONNECT · GROW</b>
+  </div>
+  <div class="hero-bridge-line"></div>
+</div>
+
+<div class="container hero-art-separate">
+  <div class="hero-art reveal" aria-hidden="true"><div class="art-grid"></div><div class="art-core"><div class="core-ring"></div><div class="core-label"><strong>HMH</strong><span data-i18n="hero.coreLabel">Build the next</span></div></div></div>
+</div>
 
 <section class="section" id="about">
   <div class="container">
@@ -1652,7 +1545,7 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
   const translations={
     id:{
       'nav.about':'Tentang','nav.ecosystem':'Ekosistem','nav.agency':'HMH Agency','nav.values':'Nilai','nav.story':'Cerita Kami','nav.contact':'Kontak',
-      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
+      'nav.explore':'Jelajahi ekosistem','nav.start':'Mulai percakapan','hero.eyebrow':'Ekosistem bisnis independen · Indonesia','hero.title':'Bangun dengan berani.<br><em>Berpikir melampaui.</em>','hero.copy':'HMH Group adalah ekosistem bisnis yang menghubungkan layanan kreatif & digital, teknologi, modal, dan venture untuk menciptakan pertumbuhan jangka panjang.','hero.cta1':'Jelajahi ekosistem HMH →','hero.cta2':'Kenali HMH Group','hero.scroll':'Gulir untuk menjelajah','hero.statement':'Kami membangun bisnis berdasarkan satu keyakinan: ide yang kuat menjadi berarti ketika strategi, eksekusi, dan manusia bergerak ke arah yang sama.','hero.holding':'Perusahaan induk','hero.core':'Ekosistem inti','hero.founder':'Pendiri & CEO','hero.coreLabel':'Membangun masa depan',
       'about.intro':'HMH Group dibangun sebagai holding company yang mengembangkan dan menghubungkan bisnis, kapabilitas, dan peluang lintas sektor.','about.established':'Didirikan','about.market':'Pasar utama','about.spectrum':'Spektrum pertumbuhan','about.value':'Penciptaan nilai',
       'ecosystem.intro':'Seperti arsitektur sebuah grup modern, tiap vertical memiliki fokus sendiri namun dirancang untuk saling menguatkan.','ecosystem.portfolio':'Peta portofolio',
       'filter.all':'Semua','filter.digital':'Digital & Kreatif','filter.capital':'Modal','filter.venture':'Venture',
@@ -1664,7 +1557,7 @@ html[data-theme="dark"] .hero-art-separate::before{background:linear-gradient(90
     },
     en:{
       'nav.about':'About','nav.ecosystem':'Ecosystem','nav.agency':'HMH Agency','nav.values':'Values','nav.story':'Our Story','nav.contact':'Contact',
-      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
+      'hero.eyebrow':'Independent business ecosystem · Indonesia','hero.title':'Build boldly.<br><em>Think beyond.</em>','hero.copy':'HMH Group is a business ecosystem connecting creative & digital services, technology, capital, and ventures to create long-term growth.','hero.cta1':'Explore HMH ecosystem →','hero.cta2':'Discover HMH Group','hero.scroll':'Scroll to explore','hero.statement':'We build businesses around one belief: strong ideas become meaningful when strategy, execution, and people move in the same direction.','hero.holding':'Holding company','hero.core':'Core ecosystem','hero.founder':'Founder & CEO','hero.coreLabel':'Build the next',
       'about.intro':'HMH Group is built as a holding company that develops and connects businesses, capabilities, and opportunities across sectors.','about.established':'Group established','about.market':'Home market','about.spectrum':'Growth spectrum','about.value':'Value creation',
       'ecosystem.intro':'Like the architecture of a modern group, each vertical has its own focus while being designed to strengthen the others.','ecosystem.portfolio':'Portfolio map',
       'filter.all':'All','filter.digital':'Digital & Creative','filter.capital':'Capital','filter.venture':'Venture',
