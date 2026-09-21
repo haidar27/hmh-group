@@ -1,4 +1,4 @@
-const CACHE = 'hmh-group-v6-theme-logos';
+const CACHE = 'hmh-group-v7-theme-logos';
 const APP_SHELL = [
   './',
   './index.html',
