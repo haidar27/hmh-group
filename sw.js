@@ -1,9 +1,11 @@
-const CACHE = 'hmh-group-v5-logo-fix';
+const CACHE = 'hmh-group-v6-theme-logos';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './img/logo.svg',
+  './img/logo-dark.svg',
+  './img/logo-light.svg',
   './img/pwa.svg',
   './img/pwa-192.png',
   './img/pwa-512.png',
