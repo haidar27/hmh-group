@@ -477,7 +477,7 @@ body:before{
 }
 .logo-mark span{color:#fff}
 .logo-text small{color:#6b6b65}
-.menu a{color:#111f32f32}
+.menu a{color:#111f32}
 .menu a:after{background:#111}
 .pill{
   color:#111f32;
@@ -544,13 +544,13 @@ body:before{
   border-color:var(--line);
   box-shadow:0 14px 35px rgba(0,0,0,.045);
 }
-.about-main p{color:#111f32f32}
+.about-main p{color:#111f32}
 .about-main p strong{color:#A67A00}
 .meta-row{background:var(--line);border-color:var(--line)}
 .meta-item{background:#111;color:#fff}
 .meta-item span{color:#b9b9b2}
 .quote-mark{color:rgba(166,122,0,.24)}
-.about-side blockquote{color:#111f32f32}
+.about-side blockquote{color:#111f32}
 .about-side small{color:#77776f}
 .verticals{background:var(--line);border-color:var(--line)}
 .vertical{background:#fff;color:#111f32}
@@ -993,6 +993,308 @@ html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
   }
   .hero-bridge-line{flex-basis:55px}
 }
+
+
+/* =========================================================
+   HMH HERO BACKGROUND — REFINED / RESPONSIVE
+   ========================================================= */
+.hero{
+  position:relative;
+  min-height:clamp(620px, calc(100svh - 82px), 820px);
+  padding:96px 0 72px;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.hero-image-box{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(255,204,0,.14), transparent 27%),
+    linear-gradient(135deg,#f8f8f5 0%,#f2f2ed 52%,#e8e8e2 100%);
+}
+
+.hero-image-box img{
+  position:absolute;
+  inset:-2%;
+  width:104%;
+  height:104%;
+  max-width:none;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
+  opacity:.38;
+  mix-blend-mode:multiply;
+  transform:scale(1.01);
+  transform-origin:center;
+}
+
+.hero-image-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,.96) 0%,
+      rgba(255,255,255,.90) 30%,
+      rgba(255,255,255,.62) 52%,
+      rgba(255,255,255,.20) 76%,
+      rgba(255,255,255,.05) 100%),
+    linear-gradient(180deg,
+      rgba(255,255,255,.04) 0%,
+      rgba(255,255,255,.05) 42%,
+      rgba(247,247,243,.46) 78%,
+      rgba(247,247,243,.88) 100%);
+}
+
+.hero-image-box::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:34%;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(247,247,243,.90));
+}
+
+.hero > .container{
+  position:relative;
+  z-index:3;
+}
+
+.hero > .container > .hero-wrap{
+  transform:none;
+  min-width:0;
+  display:grid;
+  grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr);
+  align-items:end;
+  gap:54px;
+}
+
+.hero > .container > .hero-wrap > *{
+  min-width:0;
+}
+
+.hero .reveal:first-child{
+  text-shadow:none;
+}
+
+.hero .hero-side{
+  text-shadow:none;
+  max-width:470px;
+  justify-self:end;
+}
+
+.hero .hero-copy{
+  max-width:610px;
+  text-wrap:balance;
+}
+
+.hero .hero-cta{
+  position:relative;
+  z-index:5;
+}
+
+.hero .hero-card{
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.48);
+  border-top-color:rgba(16,16,16,.14);
+}
+
+.hero .hero-card b,
+.hero .hero-card div:last-child{
+  color:#111f32;
+}
+
+.hero-art-separate{
+  position:relative;
+  z-index:2;
+}
+
+/* Dark theme adaptation: keep the same SVG but make it atmospheric. */
+html[data-theme="dark"] .hero-image-box{
+  background:
+    radial-gradient(circle at 18% 20%,rgba(255,204,0,.10),transparent 28%),
+    linear-gradient(135deg,#0d1726 0%,#111c2c 58%,#172536 100%);
+}
+
+html[data-theme="dark"] .hero-image-box img{
+  opacity:.18;
+  mix-blend-mode:screen;
+}
+
+html[data-theme="dark"] .hero-image-box::before{
+  background:
+    linear-gradient(90deg,
+      rgba(7,12,20,.72) 0%,
+      rgba(7,12,20,.52) 34%,
+      rgba(7,12,20,.26) 68%,
+      rgba(7,12,20,.08) 100%),
+    linear-gradient(180deg,
+      rgba(7,12,20,.12) 0%,
+      rgba(7,12,20,.18) 48%,
+      rgba(7,12,20,.56) 100%);
+}
+
+html[data-theme="dark"] .hero-image-box::after{
+  background:linear-gradient(180deg,transparent,rgba(11,18,30,.92));
+}
+
+html[data-theme="dark"] .hero .hero-card{
+  background:rgba(15,24,38,.52);
+  border-top-color:rgba(255,255,255,.13);
+}
+
+html[data-theme="dark"] .hero .hero-card b,
+html[data-theme="dark"] .hero .hero-card div:last-child{
+  color:#f4f5f2;
+}
+
+/* Small laptops / tablets */
+@media (max-width:1020px){
+  .hero{
+    min-height:clamp(650px, calc(100svh - 74px), 850px);
+    padding-top:82px;
+  }
+  .hero > .container > .hero-wrap{
+    grid-template-columns:1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .hero .hero-side{
+    justify-self:start;
+    max-width:620px;
+  }
+  .hero-image-box img{
+    object-position:58% center;
+  }
+  .hero-image-box::before{
+    background:
+      linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.79) 48%,rgba(255,255,255,.30) 100%),
+      linear-gradient(180deg,rgba(255,255,255,.04),rgba(247,247,243,.80));
+  }
+  html[data-theme="dark"] .hero-image-box::before{
+    background:
+      linear-gradient(90deg,rgba(7,12,20,.78) 0%,rgba(7,12,20,.48) 52%,rgba(7,12,20,.15) 100%),
+      linear-gradient(180deg,rgba(7,12,20,.10),rgba(7,12,20,.72));
+  }
+}
+
+/* Phones — no fixed offsets, no background collision, no horizontal overflow. */
+@media (max-width:760px){
+  .hero{
+    min-height:auto;
+    padding:58px 0 48px;
+    overflow:hidden;
+  }
+  .hero-image-box{
+    min-height:100%;
+  }
+  .hero-image-box img{
+    inset:-4%;
+    width:108%;
+    height:108%;
+    object-position:67% center;
+    opacity:.24;
+  }
+  .hero-image-box::before{
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.78) 40%,rgba(255,255,255,.66) 66%,rgba(247,247,243,.92) 100%);
+  }
+  .hero-image-box::after{
+    height:44%;
+    background:linear-gradient(180deg,transparent,rgba(247,247,243,.96));
+  }
+  .hero > .container > .hero-wrap{
+    transform:none;
+    grid-template-columns:minmax(0,1fr);
+    gap:34px;
+  }
+  .hero .hero-side{
+    width:100%;
+    max-width:none;
+    justify-self:stretch;
+  }
+  .hero .hero-copy{
+    margin-top:22px;
+    font-size:15px;
+    max-width:100%;
+  }
+  .hero .hero-cta{
+    gap:10px;
+    width:100%;
+  }
+  .hero .hero-cta .pill{
+    justify-content:center;
+    width:100%;
+  }
+  .hero .scroll-note{
+    margin-top:34px;
+  }
+  .hero .hero-card{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:12px;
+    padding-top:14px;
+  }
+  .hero .hero-card span{
+    display:block;
+    max-width:100%;
+  }
+  .hero-art-separate{
+    padding-top:20px;
+  }
+  html[data-theme="dark"] .hero-image-box img{
+    opacity:.14;
+  }
+  html[data-theme="dark"] .hero-image-box::before{
+    background:
+      linear-gradient(180deg,rgba(7,12,20,.70) 0%,rgba(7,12,20,.56) 44%,rgba(7,12,20,.64) 72%,rgba(7,12,20,.94) 100%);
+  }
+  html[data-theme="dark"] .hero-image-box::after{
+    height:42%;
+    background:linear-gradient(180deg,transparent,rgba(11,18,30,.96));
+  }
+}
+
+@media (max-width:480px){
+  .hero{
+    padding-top:46px;
+    padding-bottom:38px;
+  }
+  .hero .eyebrow{
+    font-size:10px;
+    letter-spacing:.12em;
+  }
+  .hero .hero-copy{
+    font-size:14px;
+    line-height:1.6;
+  }
+  .hero .hero-card{
+    padding-top:13px;
+  }
+  .hero .hero-card b{
+    font-size:13px;
+  }
+  .hero .hero-card span,
+  .hero .hero-card div:last-child{
+    font-size:11px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-image-box img{transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -1015,7 +1317,7 @@ html[data-theme="dark"] .hero-bridge-content b{color:#eef2f5}
 
 <main id="home">
 <section class="hero">
-  <div class="hero-image-box" aria-hidden="true"><img src="img/bg.jpg" alt="" /></div>
+  <div class="hero-image-box" aria-hidden="true"><img src="img/bg.svg" alt="" /></div>
   <div class="container">
     <div class="hero-wrap">
       <div class="reveal">
