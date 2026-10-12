@@ -92,6 +92,7 @@
 
     /* Navbar */
     .nav-wrap { position:fixed; top:0; left:0; right:0; z-index:50; padding:0; transition:transform .35s var(--ease), background .35s var(--ease); }
+    .nav-wrap.nav-hidden { transform:translateY(-110%); pointer-events:none; }
     .nav-wrap.scrolled { background:rgba(13,13,12,.78); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
     html[data-theme="light"] .nav-wrap.scrolled { background:rgba(255,255,255,.94); }
     .nav { height:90px; display:flex; align-items:center; justify-content:space-between; gap:24px; border:1px solid rgba(255,255,255,.08); background:rgba(15,15,13,.55); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); padding:0 14px 0 20px; border-radius:999px; box-shadow:0 15px 50px rgba(0,0,0,.12); }
@@ -1187,12 +1188,43 @@
         });
       });
 
+      let lastScrollY = window.scrollY;
+      let scrollDirectionAnchor = window.scrollY;
+      let scrollDirection = 0;
+
       function updateProgress() {
+        const currentScrollY = window.scrollY;
         const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        const pct = scrollable > 0 ? (currentScrollY / scrollable) * 100 : 0;
         progress.style.width = pct + '%';
-        nav.classList.toggle('scrolled', window.scrollY > 10);
-        backToTop.classList.toggle('is-visible', window.scrollY > 420);
+        nav.classList.toggle('scrolled', currentScrollY > 10);
+        backToTop.classList.toggle('is-visible', currentScrollY > 420);
+
+        const delta = currentScrollY - lastScrollY;
+        if (delta !== 0) {
+          const nextDirection = delta > 0 ? 1 : -1;
+          if (nextDirection !== scrollDirection) {
+            scrollDirection = nextDirection;
+            scrollDirectionAnchor = lastScrollY;
+          }
+
+          // Hide while scrolling down; reveal while scrolling up.
+          // A small threshold prevents the navbar from flickering on tiny scroll movements.
+          if (Math.abs(currentScrollY - scrollDirectionAnchor) >= 6) {
+            if (mobileMenu.classList.contains('open') || currentScrollY <= 10 || scrollDirection < 0) {
+              nav.classList.remove('nav-hidden');
+            } else if (scrollDirection > 0) {
+              nav.classList.add('nav-hidden');
+            }
+            scrollDirectionAnchor = currentScrollY;
+          }
+        }
+
+        // Keep the navbar available at the very top and whenever the mobile menu is open.
+        if (currentScrollY <= 10 || mobileMenu.classList.contains('open')) {
+          nav.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentScrollY;
       }
       addEventListener('scroll', updateProgress, {passive:true});
       backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
