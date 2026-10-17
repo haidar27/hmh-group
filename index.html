@@ -684,9 +684,12 @@
       .brand-logo { width:122px; height:122px; flex:0 0 122px; }
       .hero { min-height:100svh; }
       .hero-bg {
+        inset:0 0 auto;
+        height:100vh;
+        height:100svh;
         background-image:linear-gradient(180deg, rgba(17,31,50,.42) 0%, rgba(17,31,50,.66) 32%, rgba(17,31,50,.94) 62%, #111f32 100%), url('img/bg.jpeg');
         background-position:center, center top;
-        background-size:100% 100%, 100% auto;
+        background-size:100% 100%, cover;
         background-repeat:no-repeat, no-repeat;
         background-color:#111f32;
       }
